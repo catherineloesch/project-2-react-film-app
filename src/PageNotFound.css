@@ -1,0 +1,11 @@
+.gif {
+    height: 35vh;
+    margin-bottom: 25px;
+    margin: 25px;
+    border-radius: 5px;
+}
+
+.page-not-found-title {
+    font-size: 5vw;
+    font-family: 'uppereastsideregular';
+}

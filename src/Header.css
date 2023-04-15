@@ -17,9 +17,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3em;
-    font-size: 3.5vw;
-    padding-bottom: 25px;
+    gap: 1em;
+    font-size: 7vw;
+    padding-bottom: 0;
+    font-family: 'uppereastsideregular';
 
 
 }

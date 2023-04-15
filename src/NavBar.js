@@ -19,7 +19,7 @@ export default function NavBar() {
                     <Link to='/watched' className='nav-link'>Watched</Link>
                 </li>
                 <li className='nav-links-list-item'>
-                    <Link to='/search' className='nav-link btn'>Search</Link>
+                    <Link to='/search' className='nav-link'>Search</Link>
                 </li>
             </ul>
         </nav>

@@ -23,9 +23,9 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
             .then(resp => resp.json())
             .then(res => {
-                console.log(res.results)
                 setResultsArr(res.results)})
         }
+        setQueryFilm('')
 
     }
     function handleSearchSubmitTv(e) {
@@ -34,9 +34,9 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
             fetch(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryTv}`)
             .then(resp => resp.json())
             .then(res => {
-                console.log(res.results)
                 setResultsArr(res.results)})
         }
+        setQueryTv('')
 
     }
 

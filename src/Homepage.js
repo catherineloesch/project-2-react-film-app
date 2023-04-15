@@ -32,8 +32,8 @@ export default function Homepage() {
     <img src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM1NzI0MjM2ZTQyNzYyMDcwMWNjNjM0ZmQzMDI3YzYxMjA2YjU5YiZjdD1n/3ornk57KwDXf81rjWM/giphy.gif'/>
 
     <h3>Trending: </h3>
-    <button onClick={handleTrendingFilms}>Get Trending Films</button>
-    <button onClick={handleTrendingTv}>Get Trending Tv</button>
+    <button className='btn' onClick={handleTrendingFilms}>Get Trending Films</button>
+    <button className='btn' onClick={handleTrendingTv}>Get Trending Tv</button>
     
     
 

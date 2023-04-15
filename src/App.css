@@ -1,3 +1,40 @@
+@font-face {
+  font-family: 'caviar_dreams';
+  src: url('./assets/fonts/CaviarDreams-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'caviar_dreams';
+  src: url('./assets/fonts/Caviar_Dreams_Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'caviar_dreams';
+  src: url('./assets/fonts/CaviarDreams_Italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+
+}
+@font-face {
+  font-family: 'caviar_dreams';
+  src: url('./assets/fonts/CaviarDreams_BoldItalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+
+}
+
+@font-face {
+  font-family: 'uppereastsideregular';
+  src: url('./assets/fonts/UpperEastSide-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 .App {
   min-height: 100vh;
   padding-top: 175px;
@@ -9,7 +46,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "caviar_dreams","Source Sans Pro", sans-serif;
   color: white;
   background-color: black;
 }
@@ -18,4 +55,10 @@ body {
   .App {
     padding-top: 120px;
   }
+}
+
+.btn {
+  font-family: 'caviar_dreams';
+  font-weight: bold;
+  font-size: 1em;
 }
