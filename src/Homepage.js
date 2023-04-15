@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { tmdbKey } from './api'
 
-export default function Homepage({ apiKey }) {
-    // const url= `https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>`
+export default function Homepage() {
+  
+    const [trendingFilmArr, setTrendingFilmArr] = useState('') 
     
     function handleTrendingFilms() {
-        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`)
+        fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbKey}`)
         .then(resp => resp.json())
         .then(res => {
             console.log(res.results)
@@ -13,7 +15,7 @@ export default function Homepage({ apiKey }) {
     
 }
     function handleTrendingTv() {
-            fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`)
+            fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${tmdbKey}`)
             .then(resp => resp.json())
             .then(res => {
                 console.log(res.results)
@@ -27,10 +29,12 @@ export default function Homepage({ apiKey }) {
   return (
     <div>
     <h1>This is HOME</h1>
+    <img src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM1NzI0MjM2ZTQyNzYyMDcwMWNjNjM0ZmQzMDI3YzYxMjA2YjU5YiZjdD1n/3ornk57KwDXf81rjWM/giphy.gif'/>
 
     <h3>Trending: </h3>
     <button onClick={handleTrendingFilms}>Get Trending Films</button>
     <button onClick={handleTrendingTv}>Get Trending Tv</button>
+    
     
 
 

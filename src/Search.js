@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './Search.css'
 import Card from './Card'
-import { TmdbKey } from './api'
+import { tmdbKey } from './api'
 
-export default function Search() {
+export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
     const [queryFilm, setQueryFilm] = useState('')
     const [queryTv, setQueryTv] = useState('')
     const [resultsArr, setResultsArr] = useState('')
@@ -20,7 +20,7 @@ export default function Search() {
     function handleSearchSubmitFilm(e) {
         e.preventDefault()
         if (queryFilm) {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TmdbKey}&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
             .then(resp => resp.json())
             .then(res => {
                 console.log(res.results)
@@ -31,7 +31,7 @@ export default function Search() {
     function handleSearchSubmitTv(e) {
         e.preventDefault()
         if (queryTv) {
-            fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TmdbKey}&language=en-US&page=1&include_adult=false&query=${queryTv}`)
+            fetch(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryTv}`)
             .then(resp => resp.json())
             .then(res => {
                 console.log(res.results)
@@ -77,7 +77,7 @@ export default function Search() {
     </form>
     <section className='results-section'>
         {(resultsArr.length !== 0) && <ul className='results-list'>
-            {resultsArr.map(film => <Card key={film.id} film={film}/>)}
+            {resultsArr.map(item => <Card key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
             </ul>}
     </section>
 
