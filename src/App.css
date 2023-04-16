@@ -48,7 +48,15 @@ body {
   text-align: center;
   font-family: "caviar_dreams","Source Sans Pro", sans-serif;
   color: white;
+  background-image: url('./assets/pulpfiction.jpg');
   background-color: black;
+}
+
+
+.btn {
+  font-family: 'caviar_dreams';
+  font-weight: bold;
+  font-size: 1em;
 }
 
 @media (max-width: 800px) {
@@ -57,8 +65,3 @@ body {
   }
 }
 
-.btn {
-  font-family: 'caviar_dreams';
-  font-weight: bold;
-  font-size: 1em;
-}

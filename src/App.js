@@ -7,6 +7,7 @@ import Homepage from './Homepage';
 import Header from './Header';
 import PageNotFound from './PageNotFound';
 import Search from './Search';
+import Details from './Details';
 import { useState } from 'react';
 
 
@@ -15,7 +16,7 @@ function App() {
   // https://www.themoviedb.org/
   // const apidocs = 'https://developers.themoviedb.org/3'
   
-  const apiKey = 'b80d4ee4fbbfe6174fcc84fb6ac757b9'
+  // const apiKey = 'b80d4ee4fbbfe6174fcc84fb6ac757b9'
 
   const [toWatchList, setToWatchList] = useState([])
   const [watchedList, setWatchedList] = useState([])
@@ -28,6 +29,7 @@ function App() {
       newItem.watched = false
       setToWatchList([...toWatchList, newItem])
     }
+    console.log(item)
     
   }
 
@@ -64,7 +66,10 @@ function App() {
         <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} onToWatchList={onToWatchList}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path='/details' element={<Details />} />
+          <Route path="/details/:id" element={<Details/>} />
+
+        <Route path='*' element={<PageNotFound />} />
      </Routes>
     </div>
   );
