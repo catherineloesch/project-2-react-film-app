@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import './Search.css'
-import Card from './Card'
 import { tmdbKey } from './api'
+import FilmCard from './FilmCard'
+import TvCard from './TvCard'
 
 export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
     const [queryFilm, setQueryFilm] = useState('')
     const [queryTv, setQueryTv] = useState('')
-    const [resultsArr, setResultsArr] = useState('')
+    const [filmResultsArr, setFilmResultsArr] = useState('')
+    const [tvResultsArr, setTvResultsArr] = useState('')
     
     function handleInputChangeFilm(e) {
         e.preventDefault()
@@ -19,24 +21,29 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
 
     function handleSearchSubmitFilm(e) {
         e.preventDefault()
+        setTvResultsArr([])
+        setFilmResultsArr([])
         if (queryFilm) {
             fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
             .then(resp => resp.json())
             .then(res => {
-                setResultsArr(res.results)})
+                setFilmResultsArr(res.results)})
         }
         setQueryFilm('')
 
     }
     function handleSearchSubmitTv(e) {
         e.preventDefault()
+        setTvResultsArr([])
+        setFilmResultsArr([])
         if (queryTv) {
             fetch(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryTv}`)
             .then(resp => resp.json())
             .then(res => {
-                setResultsArr(res.results)})
+                setTvResultsArr(res.results)})
         }
         setQueryTv('')
+        
 
     }
 
@@ -77,8 +84,11 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
         </form>
     </div>
     <section className='results-section'>
-        {(resultsArr.length !== 0) && <ul className='results-list'>
-            {resultsArr.map(item => <Card key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
+        {(filmResultsArr.length !== 0) && <ul className='film-results-list'>
+            {filmResultsArr.map((item) => <FilmCard key={item.id} item={item} mediaType={'film'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
+            </ul>}
+        {(tvResultsArr.length !== 0) && <ul className='tv-results-list'>
+            {tvResultsArr.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
             </ul>}
     </section>
 

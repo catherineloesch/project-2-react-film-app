@@ -3,7 +3,9 @@ import Card from './Card'
 
 export default function WatchList({ toWatchList, clearToWatch, addNewToWatch, markAsWatched, onToWatchList}) {
    const toWatchListElements = toWatchList.map(item => <Card key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)
-
+  //add remove button
+  //  Clear/delete only marked items
+//edit items
 
 
   return (

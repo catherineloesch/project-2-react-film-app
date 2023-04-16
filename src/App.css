@@ -34,13 +34,16 @@
   font-style: normal;
 }
 
+* {
+  scroll-behavior: smooth;
+}
 
 .App {
   min-height: 100vh;
   padding-top: 175px;
 
-}
 
+}
 
 body {
   margin: 0;
@@ -51,6 +54,7 @@ body {
   background-image: url('./assets/pulpfiction.jpg');
   background-color: black;
   background-repeat: no-repeat;
+  scroll-behavior: smooth;
 }
 
 .btn {

@@ -16,9 +16,6 @@ export default function Card({ item, addNewToWatch, markAsWatched, onToWatchList
   const imgWidth = '200'
 
   
-
-
-
   return (
     <li className='card'>
       <div className='card-poster'>

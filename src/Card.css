@@ -2,7 +2,7 @@
     max-width: 200px;
 }
 
-.card{
+.card, .film-card, .tv-card {
     display: flex;
     flex-direction: column;
     background-color: grey;
@@ -11,12 +11,22 @@
     margin: 8px auto;
     border-radius: 10px;
     position: relative;
+}
+
+.film-card {
+    background-color: blueviolet;
+
+}
+
+.tv-card {
+    background-color: green;
 
 }
 
 .card-poster-img, .poster-not-available {
     border-radius: 10px;
     width: 100%;
+    height: 275px;
 }
 
 

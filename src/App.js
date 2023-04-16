@@ -62,7 +62,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path='/' element={<Homepage />} />
+        <Route path='/' element={<Homepage  addNewToWatch={addNewToWatch} markAsWatched={markAsWatched}/>} />
         <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} onToWatchList={onToWatchList}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />} />
