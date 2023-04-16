@@ -6,7 +6,17 @@
     display: flex;
 }
 
-.trending-title {
+.trending-title, .trending-film-title, .trending-tv-title {
     background-color: darkred;
     margin: 0;
+    color: #FFDB58;
+    font-size: 1.75vw;
+}
+
+.trending-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+
 }

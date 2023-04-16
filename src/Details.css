@@ -1,0 +1,17 @@
+.card-poster-img, .poster-not-available {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.details-container {
+    /* background-color: grey; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.details-text {
+    /* background-color: darkolivegreen; */
+    text-align: left;
+    font-size: 1.25vw;
+}

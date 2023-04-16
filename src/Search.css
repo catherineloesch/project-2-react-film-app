@@ -14,7 +14,6 @@
     display: inline-flex;
 } */
 
-
 .results-section {
     display: flex;
     padding: 0;
@@ -90,8 +89,8 @@
 .btn-search-submit-film:hover, .btn-search-submit-tv:hover {
     cursor: pointer;
     background-color: darkred;
-    color: #FFDB58;
-    border: 1px solid #FFDB58;
+    color: #fede6d;
+    border: 1px solid #fede6d;
 
     
     

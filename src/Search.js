@@ -48,7 +48,7 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
     }
 
   return (
-    <>
+    <div className='search-container'>
     <div className='search-form-container'>
         <form className='film-form'>
             <input 
@@ -92,6 +92,6 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
             </ul>}
     </section>
 
-    </>
+    </div>
   )
 }

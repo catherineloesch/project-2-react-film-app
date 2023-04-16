@@ -7,7 +7,8 @@ import Homepage from './Homepage';
 import Header from './Header';
 import PageNotFound from './PageNotFound';
 import Search from './Search';
-import Details from './Details';
+import FilmDetails from './FilmDetails';
+import TvDetails from './TvDetails';
 import { useState } from 'react';
 
 
@@ -66,10 +67,8 @@ function App() {
         <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} onToWatchList={onToWatchList}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />} />
-        <Route path='/film/details' element={<Details />} />
-          <Route path="/film/details/:id" element={<Details/>} />
-        <Route path='/tv/details' element={<Details />} />
-        <Route path='/tv/details/:id' element={<Details />} />
+          <Route path="/film/details/:id" element={<FilmDetails/>} />
+        <Route path='/tv/details/:id' element={<TvDetails />} />
 
         <Route path='*' element={<PageNotFound />} />
      </Routes>

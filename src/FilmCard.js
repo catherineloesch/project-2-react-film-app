@@ -27,7 +27,7 @@ export default function FilmCard({ item, addNewToWatch, markAsWatched }) {
           
           </Link>
          
-        ) : <img className='poster-not-available' src={notAvailable} alt={`${item.title} poster not available`} style={{width: `${imgWidth}px`}}/>}
+        ) : <Link to={`/film/details/${item.id}`}><img className='poster-not-available' src={notAvailable} alt={`${item.title} poster not available`} style={{width: `${imgWidth}px`}}/></Link>}
       </div>
       <div className='card-info'>
         <span>{item.title}

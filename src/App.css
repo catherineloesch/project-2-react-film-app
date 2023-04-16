@@ -52,8 +52,9 @@ body {
   font-family: "caviar_dreams","Source Sans Pro", sans-serif;
   color: white;
   background-image: url('./assets/pulpfiction.jpg');
+
   background-color: black;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   scroll-behavior: smooth;
 }
 

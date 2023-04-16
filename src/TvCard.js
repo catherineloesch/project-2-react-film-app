@@ -28,7 +28,7 @@ export default function TvCard({ item, addNewToWatch, markAsWatched }) {
           
           </Link>
          
-        ) : <img className='poster-not-available' src={notAvailable} alt={`${item.name} poster not available`} style={{width: `${imgWidth}px`}}/>}
+        ) : <Link to={`/tv/details/${item.id}`}><img className='poster-not-available' src={notAvailable} alt={`${item.name} poster not available`} style={{width: `${imgWidth}px`}}/></Link>}
       </div>
       <div className='card-info'>
         <span>{item.name}
