@@ -1,5 +1,5 @@
 import React from 'react'
-import notFound from './assets/imgNotFound.jpg'
+import notAvailable from './assets/posterNotAvailable.jpg'
 import './Card.css'
 import { Link } from 'react-router-dom'
 
@@ -13,41 +13,41 @@ export default function Card({ item, addNewToWatch, markAsWatched, onToWatchList
     markAsWatched(item)
   }
 
-  const type = item.type
+  const imgWidth = '200'
 
   
 
 
 
   return (
-    <div>
-      <div className='poster'>
+    <li className='card'>
+      <div className='card-poster'>
         {item.poster_path ? (
 
           <Link to={`/details/${item.id}`}>
             <img
-            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+            className='card-poster-img'
+            src={`https://image.tmdb.org/t/p/w${imgWidth}${item.poster_path}`}
             alt={`${item.title} poster`}
           />
           
           </Link>
          
-        ) : <img className='img-not-found' src={notFound} alt='poster not available'/>}
+        ) : <img className='poster-not-available' src={notAvailable} alt={`${item.title} poster not available`} style={{width: `${imgWidth}px`}}/>}
       </div>
-      <div className='info'>
-        <h3>{item.title}
+      <div className='card-info'>
+        <span>{item.title}
           {item.release_date ? ` (${item.release_date.slice(0, 4)})` : null}
-        </h3>
-        <p>{type}</p>          
+        </span>       
       </div>
-      <div>
-          
-        <button className='btn markAsWatched-btn' onClick={handleMarkAsWatched}>mark as watched</button>
+      <div className= 'card-btns'>
         <button className='btn add-to-watch-btn' onClick={handleAddToWatchList}>+ Watchlist</button>
+        <button className='btn markAsWatched-btn' onClick={handleMarkAsWatched}>mark as watched</button>
+        
           
           
       </div>
       
-    </div>
+    </li>
   )
 }

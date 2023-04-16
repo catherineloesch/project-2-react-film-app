@@ -42,39 +42,40 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
 
   return (
     <>
-    <h1>Add Page</h1>
-    <form className='film-form'>
-        <input 
-            className='search-input-film'
-            placeholder='Search for your next favourite film...'
-            value={queryFilm}
-            onChange={handleInputChangeFilm}
-        >
-        </input>
-        <button
-            type='submit'
-            className='btn btn-search-submit-film'
-            onClick={handleSearchSubmitFilm}
-        >
-        Search Films
-        </button>
-    </form>
-    <form className='tv-form'>
-        <input 
-            className='search-input-tv'
-            placeholder='Search for your next favourite tv show...'
-            value={queryTv}
-            onChange={handleInputChangeTv}
-        >
-        </input>
-        <button
-            type='submit'
-            className='btn btn-search-submit-tv'
-            onClick={handleSearchSubmitTv}
-        >
-        Search Tv
-        </button>
-    </form>
+    <div className='search-form-container'>
+        <form className='film-form'>
+            <input 
+                className='search-input-film'
+                placeholder='Film Title'
+                value={queryFilm}
+                onChange={handleInputChangeFilm}
+            >
+            </input>
+            <button
+                type='submit'
+                className='btn btn-search-submit-film'
+                onClick={handleSearchSubmitFilm}
+            >
+            Search Films
+            </button>
+        </form>
+        <form className='tv-form'>
+            <input 
+                className='search-input-tv'
+                placeholder='Tv Show Title'
+                value={queryTv}
+                onChange={handleInputChangeTv}
+            >
+            </input>
+            <button
+                type='submit'
+                className='btn btn-search-submit-tv'
+                onClick={handleSearchSubmitTv}
+            >
+            Search Tv Shows
+            </button>
+        </form>
+    </div>
     <section className='results-section'>
         {(resultsArr.length !== 0) && <ul className='results-list'>
             {resultsArr.map(item => <Card key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}

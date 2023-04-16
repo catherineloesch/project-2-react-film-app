@@ -1,3 +1,58 @@
 .img-not-found {
     max-width: 200px;
 }
+
+.card{
+    display: flex;
+    flex-direction: column;
+    background-color: grey;
+    width: 200px;
+    padding: 5px;
+    margin: 8px auto;
+    border-radius: 10px;
+    position: relative;
+
+}
+
+.card-poster-img, .poster-not-available {
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+
+.card-poster-img:hover {
+    cursor: pointer;
+}
+
+.card-info{
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    padding: 8px 0;
+    font-weight: bold;
+}
+
+.card-btns{
+    padding: 0 2px;
+    padding-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.add-to-watch-btn, .markAsWatched-btn {
+    border-radius: 10px;
+}
+
+.add-to-watch-btn:hover, .markAsWatched-btn:hover {
+   background-color: darkred;
+   cursor: pointer;
+}
+
+@media (max-width: 550px) {
+    .card {
+        width: 45%;
+    }
+  
+}

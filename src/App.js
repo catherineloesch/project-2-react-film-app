@@ -66,8 +66,10 @@ function App() {
         <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} onToWatchList={onToWatchList}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />} />
-        <Route path='/details' element={<Details />} />
-          <Route path="/details/:id" element={<Details/>} />
+        <Route path='/film/details' element={<Details />} />
+          <Route path="/film/details/:id" element={<Details/>} />
+        <Route path='/tv/details' element={<Details />} />
+        <Route path='/tv/details/:id' element={<Details />} />
 
         <Route path='*' element={<PageNotFound />} />
      </Routes>

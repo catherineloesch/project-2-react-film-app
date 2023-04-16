@@ -33,3 +33,16 @@ const gifs = {
     }
     
 }
+
+
+const images = {
+    posterNotAvailable: 'https://www.movienewz.com/img/films/poster-holder.jpg'
+}
+
+
+const fonts = {
+    source: 'https://www.fontsquirrel.com/',
+    caviarDreams: 'https://www.fontsquirrel.com/fonts/caviar-dreams',
+    upperEastSide: 'https://www.fontsquirrel.com/fonts/uppereastside'
+
+}

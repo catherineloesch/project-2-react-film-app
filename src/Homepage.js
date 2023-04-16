@@ -1,5 +1,6 @@
 // import React, { useState } from 'react'
 import { tmdbKey } from './api'
+import './Homepage.css'
 
 export default function Homepage() {
   
@@ -28,7 +29,7 @@ export default function Homepage() {
 
   return (
     <div>
-        <img className='gif' alt='welcome gif' src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM1NzI0MjM2ZTQyNzYyMDcwMWNjNjM0ZmQzMDI3YzYxMjA2YjU5YiZjdD1n/3ornk57KwDXf81rjWM/giphy.gif'/>
+        <img className='gif' id='gif-obi-wan' alt='welcome gif' src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM1NzI0MjM2ZTQyNzYyMDcwMWNjNjM0ZmQzMDI3YzYxMjA2YjU5YiZjdD1n/3ornk57KwDXf81rjWM/giphy.gif'/>
 
         <h3>Trending: </h3>
         <button className='btn' onClick={handleTrendingFilms}>Get Trending Films</button>
