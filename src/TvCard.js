@@ -3,9 +3,11 @@ import notAvailable from './assets/posterNotAvailable2.jpg'
 import './Card.css'
 import { Link } from 'react-router-dom'
 
-export default function TvCard({ item, addNewToWatch, markAsWatched }) {
+export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchList}) {
     function handleAddToWatchList() {
+      onToWatchList(item)
     addNewToWatch(item)
+    onToWatchList(item)
   }
 
   function handleMarkAsWatched() {

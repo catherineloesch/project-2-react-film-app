@@ -54,7 +54,7 @@ function App() {
 
   function onToWatchList(item) {
     const idList = toWatchList.map(item => item.id)
-    console.log(idList.includes(item.id))
+    console.log(`on List?? ${idList.includes(item.id)}`)
     return idList.includes(item.id)
   }
 
@@ -63,13 +63,13 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path='/' element={<Homepage  addNewToWatch={addNewToWatch} markAsWatched={markAsWatched}/>} />
+        <Route path='/' element={<Homepage  addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>} />
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} onToWatchList={onToWatchList}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />} />
-          <Route path="/film/details/:id" element={<FilmDetails/>} />
+        
+        <Route path="/film/details/:id" element={<FilmDetails/>} />
         <Route path='/tv/details/:id' element={<TvDetails />} />
-
         <Route path='*' element={<PageNotFound />} />
      </Routes>
     </div>

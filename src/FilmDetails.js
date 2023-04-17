@@ -8,17 +8,18 @@ import './Details.css'
 export default function FilmDetails() {
   const {id} = useParams()
 
-  const imgWidth = '500'
+  const imgWidth = '400'
   const [item, setItem] = useState('')
+  const trailer = (item.videos ? item.videos.results.find(vid => vid.name.toLowerCase().includes('trailer')) : false)
+  const trailerKey = (trailer ? trailer.key : false)
 
-  function fetchFilm(){
-      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbKey}&language=en-US`)
-      .then(resp => resp.json())
-      .then(res => {
-         setItem(res)
-      })
-      console.log('found a film:')
+
+  async function fetchFilm(){
+      const res = await (await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
+      .catch(err => console.log("Error with GET request:", err)))
+      .json()
       console.log(item)
+      setItem(res)
   }
 
   function convertDate(american) {
@@ -47,38 +48,39 @@ export default function FilmDetails() {
       </section>
       <section className='details-text'>
         <ul>
-          <li>Title: {item.title}</li>
-          {item.release_date && <li>Release Date: {convertDate(item.release_date)}</li>}
-          {item.runtime && <li>Runtime: {item.runtime} mins</li>}
-          {item.genres && <li><ul>Genres: {item.genres.map((genre) => {
-            return <li>{genre.name}</li>})}
+          <li key='title'>Title: {item.title}</li>
+          {item.release_date && <li key='rel-date'>Release Date: {convertDate(item.release_date)}</li>}
+          {item.runtime && <li key='runtime'>Runtime: {item.runtime} mins</li>}
+          {item.genres && <li key='genres'><ul>Genres: {item.genres.map((genre) => {
+            return <li key={genre.name}>{genre.name}</li>})}
             </ul></li>}
           
-          {item.overview && <li>Synopsis: {item.overview}</li>}
+          {item.overview && <li key='synopsis'>Synopsis: {item.overview}</li>}
           
-          {item.tagline && <li>Tagline: {item.tagline}</li>}
+          {item.tagline && <li key='tagline'>Tagline: {item.tagline}</li>}
 
          
-          {item.revenue && <li>Revenue: {item.revenue}USD</li>}
-          {item.budget && <li>Budget: {item.budget}USD</li>}
+          {item.revenue && <li key='rev'>Revenue: {item.revenue}USD</li>}
+          {item.budget && <li key='budget'>Budget: {item.budget}USD</li>}
 
-          {item.production_countries && <li><ul>Production Countries: {item.production_countries.map((country) => {
-            return <li>{country.name}</li>})}
+          {item.production_countries && <li key='prod-countries'><ul>Production Countries: {item.production_countries.map((country) => {
+            return <li key={country.name}>{country.name}</li>})}
             </ul></li>}
 
-          {item.production_companies && <li><ul>Production Companies: {item.production_companies.map((company) => {
-            return <li>{company.name}</li>})}
+          {item.production_companies && <li key='prod-companies'><ul>Production Companies: {item.production_companies.map((company) => {
+            return <li key={company.name}>{company.name}</li>})}
             </ul></li>}
 
 
-          {item.spoken_languages && <li><ul>Spoken Languages: {item.spoken_languages.map((lang) => {
-            return <li>{lang.name}</li>})}
+          {item.spoken_languages && <li key='spoken'><ul>Spoken Languages: {item.spoken_languages.map((lang) => {
+            return <li key={lang.name}>{lang.name}</li>})}
             </ul></li>}
          
-          {item.original_language && <li>Original Language: {item.original_language}</li>}
+          {item.original_language && <li key='og-lang'>Original Language: {item.original_language}</li>}
           
         </ul>
         <button onClick={fetchFilm}>fetch</button>
+        {trailerKey && <span>{trailer.key}</span>}
       </section>
     </div>
   )

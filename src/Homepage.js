@@ -5,15 +5,15 @@ import FilmCard from './FilmCard.js'
 import TvCard from './TvCard.js'
 import './Homepage.css'
 
-export default function Homepage({ addNewToWatch, markAsWatched}) {
+export default function Homepage({ addNewToWatch, markAsWatched, onToWatchList}) {
 
     const [trendingFilms, setTrendingFilms] = useState([])
     const [trendingTv, setTrendingTv] = useState([])
 
-    // useEffect(() => {
-    //     fetchTrendingFilms()
-    //     fetchTrendingTv()
-    // }, [])
+    useEffect(() => {
+        fetchTrendingFilms()
+        fetchTrendingTv()
+    }, [])
     
 
     async function fetchTrendingFilms() {
@@ -38,17 +38,19 @@ export default function Homepage({ addNewToWatch, markAsWatched}) {
   return (
     <div>
         <img className='gif' id='gif-obi-wan' alt='welcome gif' src='https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM1NzI0MjM2ZTQyNzYyMDcwMWNjNjM0ZmQzMDI3YzYxMjA2YjU5YiZjdD1n/3ornk57KwDXf81rjWM/giphy.gif'/>
+        
         <div className='trending-title '>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="2.5em" viewBox="0 0 16 16"><path fill="currentColor" d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/></svg>
             <span>Trending</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="2.5em" viewBox="0 0 16 16"><path fill="currentColor" d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/></svg>
         </div>
+      
         <div className='trending-items-container'>
             <div className='trending-films-container'>
                 <span className='trending-film-title'>Films</span>
                 <section className='results-section'>
                 {(trendingFilms.length !== 0) && <ul className='trending-films-list'>
-                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} mediaType={'film'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} />)}
+                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
                     </ul>}
                 </section>
             </div>
@@ -56,7 +58,7 @@ export default function Homepage({ addNewToWatch, markAsWatched}) {
                 <span className='trending-tv-title'>Tv Shows</span>
                 <section className='results-section'>
                 {(trendingFilms.length !== 0) && <ul className='trending-tv-list'>
-                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} />)}
+                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />)}
                     </ul>}
                 </section>
             </div>
