@@ -1,17 +1,131 @@
-.card-poster-img, .poster-not-available {
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
+.details-poster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details-poster-img, .poster-not-available {
+    border-radius: 15px;
+    width: 70%;
+    height: auto;
+    border: 8px solid darkred;
+    
+    
 }
 
 .details-container {
     /* background-color: grey; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
+    position: relative;
 }
 
 .details-text {
     /* background-color: darkolivegreen; */
     text-align: left;
-    font-size: 1.25vw;
+    font-size: 1.5vw;
+    background-color: darkred;
+    border-radius: 10px;
+    width: 90%;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    
+    
+}
+
+.details-text li {
+    list-style: none;
+    padding-right: 2vw;
+    padding-left: 2.5vw;
+    line-height: 170%;
+
+}
+
+.details-title {
+    color: #FFDB58;
+    
+
+}
+
+.synopsis, .tagline, .p-countries, .details-text ul {
+    margin: 2vh auto;
+}
+
+
+.details-ul {
+    margin: 0;
+    padding: 0;
+}
+
+.details-btns {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 3vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 70%;
+    background-color: darkred;
+    border: 8px solid darkred;
+
+    border-radius: 10px;
+    margin-top: 2vh;
+}
+
+.play-trailer-btn {
+    
+    /* font-family: "caviar_dreams","Source Sans Pro", sans-serif; */
+    background-color: #FFDB58;
+    color: darkred;
+    padding: 8px;
+    font-size: 1.15em;
+    font-weight: bold;
+    border: 1px solid #FFDB58;;
+
+}
+
+.play-trailer-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #fadd72;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+
+.close-trailer-btn {
+    background-color: black;
+    border: 2px solid white;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1em;
+    border-radius: 50%;
+    width: 2.3em;
+    height: 2.3em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -1.75vw;
+}
+
+.close-trailer-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s;
+} 
+
+.trailer-section {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
 }

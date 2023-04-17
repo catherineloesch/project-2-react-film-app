@@ -2,10 +2,9 @@
     max-width: 200px;
 }
 
-.card, .film-card, .tv-card {
+.film-card, .tv-card {
     display: flex;
     flex-direction: column;
-    background-color: grey;
     width: 200px;
     padding: 5px;
     margin: 8px auto;
@@ -83,8 +82,8 @@
 }
 
 .unmark-as-watched-btn {
-    background-color: black;
-    border: 2px solid black;
+    background-color: black	;
+    border: 2px solid black	;
 }
 
 

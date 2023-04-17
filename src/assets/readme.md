@@ -99,10 +99,18 @@ README Suggestions
 - homepage, trending
 - different aesthetic for movie/tv cards
 
+## Day4
+
+-css buttons
+-buttons functions
+
+- list removal
+
 # technologies
 
 - react, js, css, jsx
 - react-router, link
 - fonts: Fontsquirrel (https://www.fontsquirrel.com/)
+- npm install react-youtube
 
 # wireframe
