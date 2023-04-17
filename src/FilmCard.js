@@ -3,16 +3,26 @@ import notAvailable from './assets/posterNotAvailable2.jpg'
 import './Card.css'
 import { Link } from 'react-router-dom'
 
-export default function FilmCard({ item, addNewToWatch, markAsWatched, onToWatchList }) {
+export default function FilmCard({ item, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched }) {
     function handleAddToWatchList() {
-      onToWatchList(item)
       addNewToWatch(item)
-      onToWatchList(item)
+  }
+
+  function handleRemoveFromToWatch() {
+    removeFromWatchList(item)
   }
 
   function handleMarkAsWatched() {
     markAsWatched(item)
   }
+
+  function handleUnmarkAsWatched() {
+    unMarkAsWatched(item)
+  }
+
+  
+
+  
 
   const imgWidth = '200'
   return (
@@ -37,8 +47,8 @@ export default function FilmCard({ item, addNewToWatch, markAsWatched, onToWatch
         </span>       
       </div>
       <div className= 'card-btns'>
-        <button className='btn add-to-watch-btn' onClick={handleAddToWatchList}>+ Watchlist</button>
-        <button className='btn markAsWatched-btn' onClick={handleMarkAsWatched}>mark as watched</button>
+      {onToWatchList(item) ? <button onClick={handleRemoveFromToWatch}>-</button> : <button className='btn add-to-watch-btn' onClick={handleAddToWatchList}>+</button>}
+      {onWatchedList(item) ? <button onClick={handleUnmarkAsWatched}>Unmark</button> : <button className='btn markAsWatched-btn' onClick={handleMarkAsWatched}>mark as watched</button>}
         
           
           

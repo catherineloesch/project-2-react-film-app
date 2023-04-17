@@ -5,7 +5,7 @@ import FilmCard from './FilmCard.js'
 import TvCard from './TvCard.js'
 import './Homepage.css'
 
-export default function Homepage({ addNewToWatch, markAsWatched, onToWatchList}) {
+export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatchList, onToWatchList, onWatchedList, unMarkAsWatched}) {
 
     const [trendingFilms, setTrendingFilms] = useState([])
     const [trendingTv, setTrendingTv] = useState([])
@@ -50,7 +50,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, onToWatchList})
                 <span className='trending-film-title'>Films</span>
                 <section className='results-section'>
                 {(trendingFilms.length !== 0) && <ul className='trending-films-list'>
-                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
+                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
                     </ul>}
                 </section>
             </div>
@@ -58,7 +58,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, onToWatchList})
                 <span className='trending-tv-title'>Tv Shows</span>
                 <section className='results-section'>
                 {(trendingFilms.length !== 0) && <ul className='trending-tv-list'>
-                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />)}
+                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
                     </ul>}
                 </section>
             </div>

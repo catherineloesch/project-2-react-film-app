@@ -4,7 +4,7 @@ import { tmdbKey } from './api'
 import FilmCard from './FilmCard'
 import TvCard from './TvCard'
 
-export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
+export default function Search({ addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched}) {
     const [queryFilm, setQueryFilm] = useState('')
     const [queryTv, setQueryTv] = useState('')
     const [filmResultsArr, setFilmResultsArr] = useState('')
@@ -98,10 +98,10 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList}) {
     </div>
     <section className='results-section'>
     {(filmResultsArr.length !== 0) && <ul className='film-results-list'>
-        {filmResultsArr.map((item) => <FilmCard key={item.id} item={item} mediaType={'film'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
+        {filmResultsArr.map((item) => <FilmCard key={item.id} item={item} mediaType={'film'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
         </ul>}
     {(tvResultsArr.length !== 0) && <ul className='tv-results-list'>
-            {tvResultsArr.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList}/>)}
+            {tvResultsArr.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
             </ul>}
     </section>
 

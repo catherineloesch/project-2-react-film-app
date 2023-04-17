@@ -2,18 +2,18 @@ import React from 'react'
 import FilmCard from './FilmCard'
 import TvCard from './TvCard'
 
-export default function WatchList({ toWatchList, clearToWatch, addNewToWatch, markAsWatched, onToWatchList}) {
+export default function WatchList({ toWatchList, clearToWatch, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched}) {
    const toWatchListElements = toWatchList.map(item => {
     if (item.media_type === 'movie') {
-      return <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />
+      return <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>
     } else {
-      return <TvCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} />
+      return <TvCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>
     }
     
     })
-  //add remove button
-  //  Clear/delete only marked items
-//edit items
+ 
+  // Clear/delete only marked items -> remove all watched items??
+  // edit items
 
 
   return (
