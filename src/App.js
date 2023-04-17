@@ -29,9 +29,7 @@ function App() {
       const newItem = {...item}
       newItem.watched = false
       setToWatchList([...toWatchList, newItem])
-    }
-    console.log(item)
-    
+    }    
   }
 
   function removeFromWatchList(item) {
@@ -86,8 +84,8 @@ function App() {
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>} />
         
-        <Route path="/film/details/:id" element={<FilmDetails/>} />
-        <Route path='/tv/details/:id' element={<TvDetails />} />
+        <Route path="/film/details/:id" element={<FilmDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched}/>} />
+        <Route path='/tv/details/:id' element={<TvDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched}/>} />
         <Route path='*' element={<PageNotFound />} />
      </Routes>
     </div>
