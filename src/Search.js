@@ -24,7 +24,7 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList, re
         setTvResultsArr([])
         setFilmResultsArr([])
         if (queryFilm) {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbKey}&append_to_response=videos&language=en-US&page=1&include_adult=false&query=${queryFilm}`)
             .then(resp => resp.json())
             .then(res => {
                 const queryResults = res.results
@@ -47,7 +47,7 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList, re
         setTvResultsArr([])
         setFilmResultsArr([])
         if (queryTv) {
-            fetch(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&language=en-US&page=1&include_adult=false&query=${queryTv}`)
+            fetch(`https://api.themoviedb.org/3/search/tv?api_key=${tmdbKey}&append_to_response=videos&language=en-US&page=1&include_adult=false&query=${queryTv}`)
             .then(resp => resp.json())
             .then(res => {
                 const queryResults = res.results

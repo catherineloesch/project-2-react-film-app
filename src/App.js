@@ -93,6 +93,15 @@ function App() {
 
   }
 
+  function markSelectedAsWatched(selectedArr) {
+    console.log(selectedArr)
+    
+
+
+    
+
+  }
+
 
 
 
@@ -102,8 +111,8 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Homepage  addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>} />
-        <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} removeSelectedFromWatchList={removeSelectedFromWatchList}/>} />
-        <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} removeSelectedFromWatchedList={removeSelectedFromWatchedList}/>} />
+        <Route path='/watchlist' element={<WatchList toWatchList={toWatchList} clearToWatch={clearToWatch} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} removeSelectedFromWatchList={removeSelectedFromWatchList} markSelectedAsWatched={markSelectedAsWatched}/>} />
+        <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} removeSelectedFromWatchedList={removeSelectedFromWatchedList} markSelectedAsWatched={markSelectedAsWatched}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>} />
         
         <Route path="/film/details/:id" element={<FilmDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched} toWatchList={toWatchList} watchedList={watchedList} editItem={editItem}/>} />

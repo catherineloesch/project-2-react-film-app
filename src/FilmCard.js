@@ -24,13 +24,12 @@ export default function FilmCard({ item, addNewToWatch, removeFromWatchList, mar
   function handleCheckBoxChange(e) {
     item.selected = e.target.checked
     if (window.location.href.slice(-9) === 'watchlist') {
-      console.log('watchlist')
       editItem(toWatchList, item)
     } else if (window.location.href.slice(-7) === 'watched') {
-      console.log('watcheddd')
       editItem(watchedList, item)
     }
   }
+
 
 
   const imgWidth = '200'

@@ -6,12 +6,12 @@ import './Card.css'
 import './Details.css'
 import Youtube from 'react-youtube'
 
-export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched}) {
+export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched, editItem}) {
   const {id} = useParams()
   const [item, setItem] = useState('')
 
   const imgWidth = '400'
-  const trailer = (item.videos ? item.videos.results.find(vid => vid.name.toLowerCase().includes('trailer')) : false)
+  const trailer = (item.videos ? item.videos.results.find(vid => vid.name.toLowerCase().includes('official trailer')) : false)
   const trailerKey = (trailer ? trailer.key : false)
   const [showTrailer, setShowTrailer] = useState(false)
 
@@ -62,10 +62,10 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
   return (
     <div className='details-container'>
       {/*youtube element overlay - only displays after button is clicked */}
-      {showTrailer ?
+      {showTrailer ? 
         <section className='trailer-section'>
           <button className='btn close-trailer-btn' onClick={handleCloseTrailer}>
-           <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 1024 1024"><path fill="white" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 1024 1024"><path fill="white" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
           </button>
           <Youtube
             videoId={trailerKey}
@@ -137,6 +137,33 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
         </ul>
 
       </section>
+      {/*
+      <section className='edit-section'>
+            <form className='edit-form'>
+            <ul>
+              <li><label>Title: <input></input></label>{item.title}</li>
+              
+              <li><label>Release Date: <input></input></label>{(item.release_date)}</li>
+              <li><label>Runtime: <input></input></label>{item.runtime}</li>
+              <li><label>Genres: <input></input></label></li>{item.genres.map((genre) => (<li key={genre.name}>{genre.name}</li>))}
+
+              <li><label>Synopsis: <input></input></label></li>{item.overview}
+              <li><label>Tagline: <input></input></label></li>{item.tagline}
+              <li><label>Production Companies: <input></input></label></li>{item.production_companies.map((company) => (<li key={company.name}>{company.name}</li>))}
+              <li><label>Production Countries: <input></input></label></li>{item.production_countries.map((country) => {<li key={country.name}>{country.name}</li>})}
+              <li><label>Spoken Languages: <input></input></label></li>{item.spoken_languages.map((lang) => (<li key={lang.name}>{lang.name}</li>))}
+
+             
+
+        
+              {item.original_language && <li key='og-lang'><span className='details-title'>Original Language: &nbsp;</span>{item.original_language}</li>}
+              {item.revenue && <li key='rev'><span className='details-title'>Revenue:&nbsp;</span>{item.revenue}USD</li>}
+              {item.budget && <li key='budget'><span className='details-title'>Budget:&nbsp;</span>{item.budget}USD</li>}
+          </ul>
+
+            </form>
+      </section>
+          */}
 
 
     </div>
