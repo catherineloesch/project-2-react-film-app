@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-2-react-film-app/static/css/main.d8bb0666.css",
-    "main.js": "/project-2-react-film-app/static/js/main.5082201b.js",
+    "main.js": "/project-2-react-film-app/static/js/main.0ce395f4.js",
     "static/media/ronSwanson.gif": "/project-2-react-film-app/static/media/ronSwanson.c93871a62b9d945b76c8.gif",
     "static/media/pulpfiction.jpg": "/project-2-react-film-app/static/media/pulpfiction.9abb0a32daf8356396d8.jpg",
     "static/media/UpperEastSide-webfont.woff": "/project-2-react-film-app/static/media/UpperEastSide-webfont.1af572b7f5b12c3e7217.woff",
@@ -12,10 +12,10 @@
     "static/media/posterNotAvailable2.jpg": "/project-2-react-film-app/static/media/posterNotAvailable2.355d938eb208fe8ca84b.jpg",
     "index.html": "/project-2-react-film-app/index.html",
     "main.d8bb0666.css.map": "/project-2-react-film-app/static/css/main.d8bb0666.css.map",
-    "main.5082201b.js.map": "/project-2-react-film-app/static/js/main.5082201b.js.map"
+    "main.0ce395f4.js.map": "/project-2-react-film-app/static/js/main.0ce395f4.js.map"
   },
   "entrypoints": [
     "static/css/main.d8bb0666.css",
-    "static/js/main.5082201b.js"
+    "static/js/main.0ce395f4.js"
   ]
 }
