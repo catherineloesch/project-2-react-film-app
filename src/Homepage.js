@@ -17,7 +17,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
     
 
     async function fetchTrendingFilms() {
-       const res =  await (await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbKey}`)
+       const res =  await (await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbKey}&append_to_response=videos`)
         .catch(err => console.log("Error with GET request:", err)))
         .json()
         console.log(res.results)
@@ -25,7 +25,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
     }
 
     async function fetchTrendingTv() {
-        const res = await (await fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${tmdbKey}`)
+        const res = await (await fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${tmdbKey}&append_to_response=videos`)
         .catch(err => console.log("Error with GET request:", err)))
         .json()
         console.log(res.results)

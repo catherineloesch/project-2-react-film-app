@@ -84,8 +84,8 @@ function App() {
         <Route path='/watched' element={<Watched watchedList={watchedList} clearWatched={clearWatched} markAsWatched={markAsWatched} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>} />
         <Route path='/search' element={<Search addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} onToWatchList={onToWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>} />
         
-        <Route path="/film/details/:id" element={<FilmDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched}/>} />
-        <Route path='/tv/details/:id' element={<TvDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched}/>} />
+        <Route path="/film/details/:id" element={<FilmDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched} toWatchList={toWatchList} watchedList={watchedList}/>} />
+        <Route path='/tv/details/:id' element={<TvDetails onToWatchList={onToWatchList} onWatchedList={onWatchedList} addNewToWatch={addNewToWatch} removeFromWatchList={removeFromWatchList} markAsWatched={markAsWatched} unMarkAsWatched={unMarkAsWatched} toWatchList={toWatchList} watchedList={watchedList}/>} />
         <Route path='*' element={<PageNotFound />} />
      </Routes>
     </div>

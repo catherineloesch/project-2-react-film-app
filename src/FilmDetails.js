@@ -6,7 +6,7 @@ import './Card.css'
 import './Details.css'
 import Youtube from 'react-youtube'
 
-export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched }) {
+export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched}) {
   const {id} = useParams()
   const [item, setItem] = useState('')
 
@@ -20,6 +20,10 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
       .catch(err => console.log("Error with GET request:", err)))
       .json()
       setItem(res)
+  }
+
+  if (onToWatchList) {
+    console.log()
   }
 
   useEffect(() => {
