@@ -30,6 +30,7 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList, re
                 const queryResults = res.results
                 queryResults.forEach((item) => {
                     item.media_type = 'movie'
+                    item.selected = false
                 })
 
                 setFilmResultsArr(queryResults)
@@ -52,6 +53,7 @@ export default function Search({ addNewToWatch, markAsWatched, onToWatchList, re
                 const queryResults = res.results
                 queryResults.forEach((item) => {
                     item.media_type = 'tv'
+                    item.selected = false
                 })
                 setTvResultsArr(queryResults)})
         }

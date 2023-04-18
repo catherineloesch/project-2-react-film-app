@@ -21,7 +21,9 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
         .catch(err => console.log("Error with GET request:", err)))
         .json()
         console.log(res.results)
-        setTrendingFilms(res.results) 
+        const arr = res.results
+        arr.forEach((item) => (item.selected = false))
+        setTrendingFilms(arr) 
     }
 
     async function fetchTrendingTv() {
@@ -29,8 +31,9 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
         .catch(err => console.log("Error with GET request:", err)))
         .json()
         console.log(res.results)
-        setTrendingTv(res.results)
-    
+        const arr = res.results
+        arr.forEach((item) => (item.selected = false))
+        setTrendingTv(arr)
     }
 
 

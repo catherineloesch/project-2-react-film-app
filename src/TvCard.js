@@ -3,7 +3,7 @@ import notAvailable from './assets/posterNotAvailable2.jpg'
 import './Card.css'
 import { Link } from 'react-router-dom'
 
-export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched}) {
+export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched, editItem, toWatchList,  watchedList}) {
     function handleAddToWatchList() {
     addNewToWatch(item)
   }
@@ -20,11 +20,23 @@ export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchLi
     unMarkAsWatched(item)
   }
 
+  function handleCheckBoxChange(e) {
+    item.selected = e.target.checked
+    if (window.location.href.slice(-9) === 'watchlist') {
+      editItem(toWatchList, item)
+    } else if (window.location.href.slice(-7) === 'watched') {
+      editItem(watchedList, item)
+    }
+  }
+
+
 
   const imgWidth = '200'
 
   return (
     <li className='tv-card'>
+    <input type='checkbox' className='checkbox' onChange={handleCheckBoxChange}></input>
+    
       <div className='card-poster'>
         {item.poster_path ? (
 

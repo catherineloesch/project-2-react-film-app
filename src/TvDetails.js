@@ -7,7 +7,7 @@ import './Details.css'
 import Youtube from 'react-youtube'
 
 
-export default function TvDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched }) {
+export default function TvDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched, editItem }) {
   const {id} = useParams()
   const [item, setItem] = useState('')
 
