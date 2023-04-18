@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched}) {
     function handleAddToWatchList() {
-      onToWatchList(item)
     addNewToWatch(item)
-    onToWatchList(item)
   }
 
   function handleRemoveFromToWatch() {
