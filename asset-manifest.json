@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/project-2-react-film-app/static/css/main.d8bb0666.css",
+    "main.js": "/project-2-react-film-app/static/js/main.7e73b22b.js",
+    "static/media/ronSwanson.gif": "/project-2-react-film-app/static/media/ronSwanson.c93871a62b9d945b76c8.gif",
+    "static/media/pulpfiction.jpg": "/project-2-react-film-app/static/media/pulpfiction.9abb0a32daf8356396d8.jpg",
+    "static/media/UpperEastSide-webfont.woff": "/project-2-react-film-app/static/media/UpperEastSide-webfont.1af572b7f5b12c3e7217.woff",
+    "static/media/CaviarDreams_Italic-webfont.woff": "/project-2-react-film-app/static/media/CaviarDreams_Italic-webfont.593c0c2e256d4dc22aa5.woff",
+    "static/media/CaviarDreams_BoldItalic-webfont.woff": "/project-2-react-film-app/static/media/CaviarDreams_BoldItalic-webfont.46886deffda064b593e6.woff",
+    "static/media/Caviar_Dreams_Bold-webfont.woff": "/project-2-react-film-app/static/media/Caviar_Dreams_Bold-webfont.46b7eb53132d616fa71a.woff",
+    "static/media/CaviarDreams-webfont.woff": "/project-2-react-film-app/static/media/CaviarDreams-webfont.921ef7ca1af365ffb313.woff",
+    "static/media/posterNotAvailable2.jpg": "/project-2-react-film-app/static/media/posterNotAvailable2.355d938eb208fe8ca84b.jpg",
+    "index.html": "/project-2-react-film-app/index.html",
+    "main.d8bb0666.css.map": "/project-2-react-film-app/static/css/main.d8bb0666.css.map",
+    "main.7e73b22b.js.map": "/project-2-react-film-app/static/js/main.7e73b22b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8bb0666.css",
+    "static/js/main.7e73b22b.js"
+  ]
+}
