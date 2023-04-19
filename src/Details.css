@@ -23,7 +23,7 @@
 .details-text {
     /* background-color: darkolivegreen; */
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 1.25vw;
     background-color: darkred;
     border-radius: 10px;
     width: 90%;
@@ -87,8 +87,9 @@
 
 .play-trailer-btn:hover {
     cursor: pointer;
-    transform: scale(1.1);
-    background-color: #fadd72;
+    transform: scale(1.05);
+    background-color: darkred;
+    color: #FFDB58;
     transition: 0.3s;
     cursor: pointer;
 
@@ -110,7 +111,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: -1.75vw;
+    margin-right: -1vw;
 }
 
 .close-trailer-btn:hover {

@@ -1,0 +1,64 @@
+.new-item-form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.new-film-form {
+    background-color: black;
+    color: white;
+    z-index: 100;
+    list-style: none;
+    display: flex;
+    text-align: left;
+    font-size: 1.5vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 40vw;
+    padding: 5vw;
+
+}
+
+.new-film-form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-film-form ul li {
+    list-style: none;
+    margin: 2vh auto;
+}
+
+.new-film-form ul input {
+    font-size: 1.25vw;
+    font-family: "caviar_dreams","Source Sans Pro", sans-serif;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 5px;
+}
+
+.new-film-form ul input:focus {
+    outline: none;
+    border: 1px solid #FFDB58;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    color: #FFDB58;
+    font-family: "caviar_dreams","Source Sans Pro", sans-serif;
+
+
+
+}
+
+.genres-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
