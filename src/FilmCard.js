@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import notAvailable from './assets/posterNotAvailable2.jpg'
 import './Card.css'
+import './Details.css'
 import { tmdbKey } from './api'
 import EditFilmForm from './EditFilmForm'
 
-export default function FilmCard({ item, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, toWatchList, watchedList }) {
-  
+export default function FilmCard({ setToWatchList, setWatchedList, item, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, toWatchList, watchedList }) {
   const [showDetails, setShowDetails] = useState(false)
-  const [detailsItem, setdetailsItem] = useState(item)
+  const [displayItem, setDisplayItem] = useState(item)
   const [showEditForm, setShowEditForm] = useState(false)
 
   function handleAddToWatchList() {
@@ -48,17 +48,26 @@ export default function FilmCard({ item, addNewToWatch, removeFromWatchList, mar
     const res = await (await fetch(`https://api.themoviedb.org/3/movie/${item.id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
     .catch(err => console.log("Error with GET request:", err)))
     .json()
-    setdetailsItem(res)
+    setDisplayItem(res)
     console.log(res)
 }
 
 
   async function handleImgClicked() {
-    if (!item.user_entered) {
+
+
+    if (!!item.imdb_id) {
+      console.log('have details')
+    } else {
+      console.log('no details')
+    }
+    if (!item.user_entered && !onToWatchList(item)) {
       fetchFilm()
       console.log('fetched film')
-
+    } else {
+      setDisplayItem(item)
     }
+     console.log('fetched film')
     setShowDetails(true)
   }
 
@@ -191,22 +200,22 @@ if (item.poster_path){
       
         <li key='title'><span className='details-title'>Title:&nbsp;</span>{item.title}</li>
         {item.release_date && <li key='rel-date'><span className='details-title'>Release Date: &nbsp;</span>{convertDate(item.release_date)}</li>}
-        {detailsItem.runtime && <li key='runtime'><span className='details-title'>Runtime:&nbsp;</span>{detailsItem.runtime} mins</li>}
+        {displayItem.runtime && <li key='runtime'><span className='details-title'>Runtime:&nbsp;</span>{displayItem.runtime} mins</li>}
         {item.overview && <li key='synopsis' className='synopsis'><span className='details-title'>Synopsis:&nbsp; </span>{item.overview}</li>}
-        {detailsItem.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline: </span>{detailsItem.tagline}</li>}
-        {detailsItem.original_language && <li key='og-lang'><span className='details-title'>Original Language: &nbsp;</span>{detailsItem.original_language}</li>}
-        {detailsItem.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{detailsItem.spoken_languages.map((lang) => {
+        {displayItem.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline: </span>{displayItem.tagline}</li>}
+        {displayItem.original_language && <li key='og-lang'><span className='details-title'>Original Language: &nbsp;</span>{displayItem.original_language}</li>}
+        {displayItem.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{displayItem.spoken_languages.map((lang) => {
           return <li key={lang.name}>{lang.name}</li>})}
           </ul></li>}
     </ul>
     <ul>
-    {detailsItem.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{detailsItem.genres.map((genre) => {
+    {displayItem.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{displayItem.genres.map((genre) => {
       return <li key={genre.name}>{genre.name}</li>})}
       </ul></li>}
-    {detailsItem.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{detailsItem.production_countries.map((country) => {
+    {displayItem.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{displayItem.production_countries.map((country) => {
         return <li key={country.name}>{country.name}</li>})}
       </ul></li>}
-    {detailsItem.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{detailsItem.production_companies.map((company) => {
+    {displayItem.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{displayItem.production_companies.map((company) => {
         return <li key={company.name}>{company.name}</li>})}
         </ul></li>}
     </ul>
@@ -215,7 +224,7 @@ if (item.poster_path){
     </div>
   </section>
   </section>}
-  {showEditForm && <section className='edit-section'><EditFilmForm item={item} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList}/></section>}
+  {showEditForm && <section className='edit-section'><EditFilmForm setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
       
     </li>
 

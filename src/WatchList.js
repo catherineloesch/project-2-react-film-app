@@ -6,15 +6,16 @@ import NewTvForm from './NewTvForm.js'
 import { useState } from 'react';
 import './List.css'
 
-export default function WatchList({ toWatchList, clearToWatch, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, removeSelectedFromWatchList,  markSelectedAsWatched }) {
+export default function WatchList({ setWatchedList, toWatchList, setToWatchList, clearToWatch, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, removeSelectedFromWatchList,  markSelectedAsWatched }) {
    
+ 
 
 
   const toWatchListElements = toWatchList.map(item => {
     if (item.media_type === 'movie') {
-      return <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} toWatchList={toWatchList} />
+      return <FilmCard key={item.id} setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} toWatchList={toWatchList} />
     } else {
-      return <TvCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} toWatchList={toWatchList} />
+      return <TvCard key={item.id} setWatchedList={setWatchedList} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} toWatchList={toWatchList} />
     }
     
   })

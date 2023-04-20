@@ -2,36 +2,38 @@ import React from 'react'
 import { useState } from 'react';
 import './List.css'
 
-export default function EditFilmForm({ item, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
+export default function EditFilmForm({  onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
+  
 
-
+ 
   const templateObj = {
 
-    genres: [],
+    genres: item.genres,
     id: item.id,
-    original_language: '',
-    overview: '',
-    poster_link: '',
-    production_companies: [],
-    production_countries: [],
-    release_date: '',
-    runtime: '',
-    spoken_languages: [],
-    tagline: '',
+    original_language: item.original_language,
+    overview: item.overview,
+    poster_path: item.poster_path,
+    poster_link: item.poster_link,
+    production_companies: item.production_companies,
+    production_countries: item.production_countries,
+    release_date: item.release_date,
+    runtime: item.runtime,
+    spoken_languages: item.spoken_languages,
+    tagline: item.tagline,
     title: item.title,
-    user_entered: true,
-    media_type: 'movie',
-    videos: []
+    media_type: 'movie'
+
   }
 
 const [formData, setFormData] = useState(templateObj)
+
 function handleFormChange(e) {
     const newInput = {...formData, [e.target.name]: e.target.value}
     console.log(newInput)
     setFormData(newInput)
 }
 
-const [companyFields, setCompanyFields] = useState([{name: ''}])
+const [companyFields, setCompanyFields] = useState([formData.production_companies])
 function addCompanyField(){
   setCompanyFields([...companyFields, {name: ''}])
 }
@@ -53,7 +55,7 @@ function handleCompanyField(e, index) {
   setFormData(newInput)
 }
 
-const [countryFields, setCountryFields] = useState([{name: ''}])
+const [countryFields, setCountryFields] = useState(formData.production_countries)
 function addCountryField(){
  setCountryFields([...countryFields, {name: ''}])
 }
@@ -79,7 +81,7 @@ function handleCountryField(e, index) {
 }
 
 
-const [languageFields, setLanguageFields] = useState([{name: ''}])
+const [languageFields, setLanguageFields] = useState(formData.spoken_languages)
 function addLangField(){
  setLanguageFields([...languageFields, {name: ''}])
 }
@@ -103,7 +105,7 @@ function handleLangField(e, index) {
  }
 
 
-const [genres, setGenres] = useState([{name: 'Action'}])
+const [genres, setGenres] = useState(formData.genres)
 function addGenre(){
  setGenres([...genres, {name: ''}])
 }
@@ -126,19 +128,21 @@ function handleGenres(e, index) {
 }
 
 function handleFormSubmit(e) {
+  let newArr
   e.preventDefault()
-  if (window.location.href.slice(-9) === 'watchlist') {
-    editItem(toWatchList, formData)
-  } else if (window.location.href.slice(-7) === 'watched') {
-    editItem(watchedList, formData)
-  } 
-  
+  if (onToWatchList(item)) {
+     newArr = toWatchList.map(movie => {
+    if (movie.id === item.id) {
+      return formData
+    } else {
+      return movie
+    }
+    })
+    setToWatchList(newArr)
+    console.log(newArr)
+  }
 
-  editItem(toWatchList, formData)
-  console.log('list:')
-  console.log(toWatchList)
-  // addNewToWatch(formData)
-  // setFormData(templateObj)
+    
   closeEditForm()
   
 }
@@ -152,13 +156,13 @@ function handleFormSubmit(e) {
     <ul>
       <li>Title: <input name='title' onChange={handleFormChange} value={formData.title}></input></li>
       
-      <li>Release Date: <input name='release_date' placeholder='DD/MM/YYYY' onChange={handleFormChange}></input></li>
-      <li>Runtime: <input name='runtime' onChange={handleFormChange}></input></li>
-      <li><div className='synopsis'>Synopsis: <textarea name='overview' onChange={handleFormChange}></textarea></div></li>
+      <li>Release Date: <input name='release_date' placeholder='DD/MM/YYYY' onChange={handleFormChange} value={formData.release_date}></input></li>
+      <li>Runtime: <input name='runtime' value={formData.runtime} onChange={handleFormChange}></input></li>
+      <li><div className='synopsis'>Synopsis: <textarea name='overview' value={formData.overview} onChange={handleFormChange}></textarea></div></li>
 
-      <li>Tagline: <input name='tagline' onChange={handleFormChange}></input></li>
+      <li>Tagline: <input name='tagline' value={formData.tagline} onChange={handleFormChange}></input></li>
 
-      <li>Original Language: <input name='original_language' onChange={handleFormChange}></input>
+      <li>Original Language: <input name='original_language' value={formData.original_language} onChange={handleFormChange}></input>
       </li>
 
       <li>Spoken Languages:
@@ -181,7 +185,7 @@ function handleFormSubmit(e) {
     {genres.map((genre, index) => {
       return (<div key={index}>
 
-      <select key={index} name="genres" value={genre.name} onChange={(e) => handleGenres(e, index)}>
+      <select key={index} name="genres" className='btn-dropdown' value={genre.name} onChange={(e) => handleGenres(e, index)}>
         <option value={'Action'}>Action</option>
         <option value={'Adventure'}>Adventure</option>
         <option value={'Animation'}>Animation</option>
@@ -239,7 +243,7 @@ function handleFormSubmit(e) {
    
    
    
-      <li>Image URL: <input name='poster_link' onChange={handleFormChange}></input>
+      <li>Image URL: <input name='poster_link' value={formData.poster_link} onChange={handleFormChange}></input>
       </li>
     
       <button className='btn btn-submit-new-show' type="submit">Save Changes</button>

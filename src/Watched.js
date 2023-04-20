@@ -2,12 +2,12 @@ import React from 'react'
 import FilmCard from './FilmCard'
 import TvCard from './TvCard'
 
-export default function Watched({ watchedList, clearWatched, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, removeSelectedFromWatchedList, toWatchList}) {  
+export default function Watched({ setWatchedList, watchedList, clearWatched, addNewToWatch, removeFromWatchList, markAsWatched, onToWatchList, onWatchedList, unMarkAsWatched, editItem, removeSelectedFromWatchedList, toWatchList}) {  
     const WatchedElements = watchedList.map(item => {
       if (item.media_type === 'movie') {
-        return <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList}/>
+        return <FilmCard key={item.id} setWatchedList={setWatchedList} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList}/>
       } else {
-        return <TvCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList}/>
+        return <TvCard key={item.id} setWatchedList={setWatchedList} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList}/>
       }
       
       })

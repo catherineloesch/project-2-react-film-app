@@ -1,23 +1,22 @@
 // import React, { useState } from 'react'
-import { useEffect, useState } from 'react'
-import { tmdbKey } from './api'
+
 import FilmCard from './FilmCard.js'
 import TvCard from './TvCard.js'
 import './Homepage.css'
+import { useEffect, useState } from 'react'
+import { tmdbKey } from './api';
 
 export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatchList, onToWatchList, onWatchedList, unMarkAsWatched, editItem}) {
-
+   
     const [trendingFilms, setTrendingFilms] = useState([])
     const [trendingTv, setTrendingTv] = useState([])
-
-   
 
     useEffect(() => {
         fetchTrendingFilms()
         fetchTrendingTv()
     }, [])
     
-
+  
     async function fetchTrendingFilms() {
        const res =  await (await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbKey}&append_to_response=videos`)
         .catch(err => console.log("Error with GET request:", err)))
@@ -27,7 +26,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
         arr.forEach((item) => (item.selected = false))
         setTrendingFilms(arr) 
     }
-
+  
     async function fetchTrendingTv() {
         const res = await (await fetch(`https://api.themoviedb.org/3/trending/tv/day?api_key=${tmdbKey}&append_to_response=videos`)
         .catch(err => console.log("Error with GET request:", err)))
@@ -37,7 +36,9 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
         arr.forEach((item) => (item.selected = false))
         setTrendingTv(arr)
     }
-
+  
+  
+  
 
 
   return (
