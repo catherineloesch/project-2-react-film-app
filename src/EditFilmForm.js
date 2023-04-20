@@ -2,9 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import './List.css'
 
-export default function EditFilmForm({  onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
+export default function EditFilmForm({ setShowDetails, fetchedFilms, setFetchedFilms, onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
   
-
+  console.log(item)
  
   const templateObj = {
 
@@ -128,8 +128,21 @@ function handleGenres(e, index) {
 }
 
 function handleFormSubmit(e) {
-  let newArr
   e.preventDefault()
+  const fetchedIdList = fetchedFilms.map((fetchedFilm) => fetchedFilm.id)
+  let newArr
+  if (fetchedIdList.includes(item.id)) {
+    newArr = fetchedFilms.map(movie => {
+      if (movie.id === item.id) {
+        return formData
+      } else {
+        return movie
+      }
+    })
+    setFetchedFilms(newArr)
+  }
+
+
   if (onToWatchList(item)) {
      newArr = toWatchList.map(movie => {
     if (movie.id === item.id) {
@@ -142,8 +155,8 @@ function handleFormSubmit(e) {
     console.log(newArr)
   }
 
-    
   closeEditForm()
+  setShowDetails(false)
   
 }
 
@@ -243,7 +256,7 @@ function handleFormSubmit(e) {
    
    
    
-      <li>Image URL: <input name='poster_link' value={formData.poster_link} onChange={handleFormChange}></input>
+      <li>Image URL: <input name='poster_link' value={item.user_entered ? formData.poster_link : formData.poster_path} onChange={handleFormChange}></input>
       </li>
     
       <button className='btn btn-submit-new-show' type="submit">Save Changes</button>

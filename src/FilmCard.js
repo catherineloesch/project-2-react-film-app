@@ -10,6 +10,8 @@ export default function FilmCard({ setToWatchList, setWatchedList, item, addNewT
   const [displayItem, setDisplayItem] = useState(item)
   const [showEditForm, setShowEditForm] = useState(false)
 
+  const [fetchedFilms, setFetchedFilms] = useState([])
+
   function handleAddToWatchList() {
       addNewToWatch(item)
   }
@@ -49,25 +51,22 @@ export default function FilmCard({ setToWatchList, setWatchedList, item, addNewT
     .catch(err => console.log("Error with GET request:", err)))
     .json()
     setDisplayItem(res)
+    setFetchedFilms([...fetchedFilms, res])
     console.log(res)
 }
 
 
   async function handleImgClicked() {
-
-
-    if (!!item.imdb_id) {
-      console.log('have details')
+    const fetchedIdList = fetchedFilms.map((item) => item.id)
+    if (fetchedIdList.includes(item.id)) {
+      setDisplayItem(fetchedFilms.find(fetchedFilm => fetchedFilm.id === item.id))
+    } else if (item.user_entered) {
+      setDisplayItem(item)
     } else {
-      console.log('no details')
-    }
-    if (!item.user_entered && !onToWatchList(item)) {
       fetchFilm()
       console.log('fetched film')
-    } else {
-      setDisplayItem(item)
     }
-     console.log('fetched film')
+  
     setShowDetails(true)
   }
 
@@ -224,7 +223,7 @@ if (item.poster_path){
     </div>
   </section>
   </section>}
-  {showEditForm && <section className='edit-section'><EditFilmForm setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
+  {showEditForm && <section className='edit-section'><EditFilmForm setShowDetails={setShowDetails} fetchedFilms={fetchedFilms} setFetchedFilms={setFetchedFilms} setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
       
     </li>
 
