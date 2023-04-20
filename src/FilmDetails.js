@@ -6,44 +6,41 @@ import './Card.css'
 import './Details.css'
 import Youtube from 'react-youtube'
 
-export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched, editItem}) {
+export default function FilmDetails({ detailsSelected, toWatchList, watchedList, onToWatchList, onWatchedList, addNewToWatch, removeFromWatchList, markAsWatched, unMarkAsWatched, editItem}) {
+  
+
   const {id} = useParams()
-  const [item, setItem] = useState('')
+  
+
+  // async function fetchFilm(){
+  //   const res = await (await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
+  //   .catch(err => console.log("Error with GET request:", err)))
+  //   .json()
+  //   setItem(res)
+  // }
+  
 
   const imgWidth = '400'
-  const trailer = (item.videos ? item.videos.results.find(vid => vid.name.toLowerCase().includes('official trailer')) : false)
+  const trailer = (detailsSelected.videos ? detailsSelected.videos.results.find(vid => vid.name.toLowerCase().includes('official trailer')) : false)
   const trailerKey = (trailer ? trailer.key : false)
   const [showTrailer, setShowTrailer] = useState(false)
 
-  async function fetchFilm(){
-      const res = await (await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
-      .catch(err => console.log("Error with GET request:", err)))
-      .json()
-      setItem(res)
-  }
 
-  if (onToWatchList) {
-    console.log()
-  }
-
-  useEffect(() => {
-    fetchFilm()
-    }, [])
 
   function handleAddToWatchList() {
-      addNewToWatch(item)
+      addNewToWatch(detailsSelected)
   }
 
   function handleRemoveFromToWatch() {
-    removeFromWatchList(item)
+    removeFromWatchList(detailsSelected)
   }
 
   function handleMarkAsWatched() {
-    markAsWatched(item)
+    markAsWatched(detailsSelected)
   }
 
   function handleUnmarkAsWatched() {
-    unMarkAsWatched(item)
+    unMarkAsWatched(detailsSelected)
   }
 
   function convertDate(american) {
@@ -58,6 +55,7 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
   function handleCloseTrailer() {
     setShowTrailer(false)
   }
+
 
   return (
     <div className='details-container'>
@@ -74,23 +72,23 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
      
       <section className='details-poster'>
         {/* film poster */}
-        {item.poster_path ? (
+        {detailsSelected.poster_path ? (
         <img
         className='details-poster-img'
-        src={`https://image.tmdb.org/t/p/w${imgWidth}${item.poster_path}`}
-        alt={`${item.title} poster`}
+        src={`https://image.tmdb.org/t/p/w${imgWidth}${detailsSelected.poster_path}`}
+        alt={`${detailsSelected.title} poster`}
         />)
         : <img
          className='poster-not-available'
          src={notAvailable}
-         alt={`${item.title} poster not available`}
+         alt={`${detailsSelected.title} poster not available`}
          style={{width: `${imgWidth}px`}}
          />}
 
         {/* buttons */}
         <div className= 'details-btns'>
           {/* toggle button - mark as watched/unwatched */}
-          {onWatchedList(item) ?
+          {onWatchedList(detailsSelected) ?
             <button className='btn unmark-as-watched-btn' onClick={handleUnmarkAsWatched}>
               <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="white" d="M22.54 16.88L20.41 19l2.13 2.12l-1.42 1.42L19 20.41l-2.12 2.13l-1.41-1.42L17.59 19l-2.12-2.12l1.41-1.41L19 17.59l2.12-2.12l1.42 1.41M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3m0 8c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5c0 .5-.1 1-.23 1.43c.69-.27 1.44-.43 2.23-.43c1.12 0 2.17.32 3.07.85c.36-.58.67-1.2.93-1.85c-1.73-4.39-6-7.5-11-7.5S2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5c.35 0 .69 0 1.03-.05c-.03-.15-.03-.3-.03-.45c0-.79.16-1.54.43-2.23c-.43.13-.93.23-1.43.23Z"/></svg>
             </button>
@@ -99,7 +97,7 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
             </button>}
             
         {/* toggle button - mark as add/remove from watchlist */}
-        {onToWatchList(item) ?
+        {onToWatchList(detailsSelected) ?
         <button className='btn remove-from-to-watch-btn' onClick={handleRemoveFromToWatch}>
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 1024 1024"><path fill="#800020" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496z"/></svg>
         </button>
@@ -114,26 +112,26 @@ export default function FilmDetails({ onToWatchList, onWatchedList, addNewToWatc
       </section>
       <section className='details-text'>
         <ul>
-          <li key='title'><span className='details-title'>Title:&nbsp;</span>{item.title}</li>
-          {item.release_date && <li key='rel-date'><span className='details-title'>Release Date: &nbsp;</span>{convertDate(item.release_date)}</li>}
-          {item.runtime && <li key='runtime'><span className='details-title'>Runtime:&nbsp;</span>{item.runtime} mins</li>}
-          {item.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{item.genres.map((genre) => {
+          <li key='title'><span className='details-title'>Title:&nbsp;</span>{detailsSelected.title}</li>
+          {detailsSelected.release_date && <li key='rel-date'><span className='details-title'>Release Date: &nbsp;</span>{convertDate(detailsSelected.release_date)}</li>}
+          {detailsSelected.runtime && <li key='runtime'><span className='details-title'>Runtime:&nbsp;</span>{detailsSelected.runtime} mins</li>}
+          {detailsSelected.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{detailsSelected.genres.map((genre) => {
             return <li key={genre.name}>{genre.name}</li>})}
             </ul></li>}
-          {item.overview && <li key='synopsis' className='synopsis'><span className='details-title'>Synopsis:&nbsp; </span>{item.overview}</li>}
-          {item.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline:&nbsp; </span>{item.tagline}</li>}
-          {item.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{item.production_companies.map((company) => {
+          {detailsSelected.overview && <li key='synopsis' className='synopsis'><span className='details-title'>Synopsis:&nbsp; </span>{detailsSelected.overview}</li>}
+          {detailsSelected.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline:&nbsp; </span>{detailsSelected.tagline}</li>}
+          {detailsSelected.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{detailsSelected.production_companies.map((company) => {
             return <li key={company.name}>{company.name}</li>})}
             </ul></li>}
-          {item.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{item.production_countries.map((country) => {
+          {detailsSelected.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{detailsSelected.production_countries.map((country) => {
               return <li key={country.name}>{country.name}</li>})}
               </ul></li>}
-          {item.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{item.spoken_languages.map((lang) => {
+          {detailsSelected.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{detailsSelected.spoken_languages.map((lang) => {
             return <li key={lang.name}>{lang.name}</li>})}
             </ul></li>}
-          {item.original_language && <li key='og-lang'><span className='details-title'>Original Language: &nbsp;</span>{item.original_language}</li>}
-          {item.revenue && <li key='rev'><span className='details-title'>Revenue:&nbsp;</span>{item.revenue}USD</li>}
-          {item.budget && <li key='budget'><span className='details-title'>Budget:&nbsp;</span>{item.budget}USD</li>}
+          {detailsSelected.original_language && <li key='og-lang'><span className='details-title'>Original Language: &nbsp;</span>{detailsSelected.original_language}</li>}
+          {detailsSelected.revenue && <li key='rev'><span className='details-title'>Revenue:&nbsp;</span>{detailsSelected.revenue}USD</li>}
+          {detailsSelected.budget && <li key='budget'><span className='details-title'>Budget:&nbsp;</span>{detailsSelected.budget}USD</li>}
         </ul>
 
       </section>

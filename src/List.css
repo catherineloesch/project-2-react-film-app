@@ -1,36 +1,79 @@
 .new-item-form-section {
+    margin-top: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
-.new-film-form {
+
+/* .form-div {
+    width: 70vw;
+    background-color: black;
+    display: flex;
+    text-align: left;
+} */
+
+
+.new-film-form, .new-tv-form {
     background-color: black;
     color: white;
     z-index: 100;
     list-style: none;
     display: flex;
+    flex-direction: column;
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 0.9vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 80vw;
+    padding: 2vw;
+    align-items: center;
+}
+
+
+/* .new-tv-form {
+    background-color: black;
+   
+    list-style: none;
+  
+    font-size: 1vw;
     border: 2px solid white;
     border-radius: 10px;
     width: 40vw;
     padding: 5vw;
+    
 
+} */
+
+.form-title {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5vh;
 }
 
-.new-film-form ul {
+.new-film-form-columns, .new-tv-form-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    text-align: left;
+    width: 55vw;
+}
+
+.new-film-form ul, .new-tv-form  ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.new-film-form ul li {
+.new-film-form ul li, .new-tv-form ul li {
     list-style: none;
     margin: 2vh auto;
+
 }
 
-.new-film-form ul input {
-    font-size: 1.25vw;
+.new-film-form ul input, .new-tv-form  ul input {
+    font-size: 1.2vw;
     font-family: "caviar_dreams","Source Sans Pro", sans-serif;
     background-color: black;
     border: 1px solid white;
@@ -39,6 +82,61 @@
     border-top: none;
     border-right: none;
     padding: 5px;
+    width: 95%;
+    margin-top: 1vh;
+}
+
+.new-film-form ul input:focus, .new-tv-form  ul input:focus {
+    outline: none;
+    border: 1px solid #FFDB58;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    color: #FFDB58;
+}
+
+
+.new-film-form textarea, .new-tv-form textarea {
+    font-size: 1.2vw;
+    font-family: "caviar_dreams","Source Sans Pro", sans-serif;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    border-left: none;
+    border-top: none;
+    padding: 5px;
+    width: 95%;
+}
+
+.new-film-form textarea:focus, .new-tv-form textarea:focus {
+    outline: none;
+    border: 1px solid #FFDB58;
+    border-left: none;
+    border-top: none;
+    color: #FFDB58;
+
+}
+
+
+.search-input-tv, .search-input-film {
+    border-radius: 10px;
+    font-size: 1.2em;
+    border: 1px solid white;
+    color: #FFDB58;
+    width: 20vw;
+    height: 1.75em;
+    background-color: black;
+    padding: 2px;
+    font-family: "caviar_dreams","Source Sans Pro", sans-serif;
+    padding-left: 10px;
+
+
+}
+
+.search-input-tv:focus, .search-input-film:focus {
+    outline: none;
+    border: 1px solid #FFDB58;
+
 }
 
 .new-film-form ul input:focus {
@@ -51,6 +149,51 @@
     font-family: "caviar_dreams","Source Sans Pro", sans-serif;
 
 
+
+}
+
+.input-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 1.2vw;
+    margin-right: 0.75vw;
+    margin-top: 4px;
+}
+
+.input-btn:hover {
+    cursor: pointer;
+}
+
+
+.btn-dropdown {
+    background-color: black;
+    color: white;
+    padding: 2px;
+    font-weight: normal;
+    border-radius: 10px;
+    margin: 1vh;
+    
+}
+
+.btn-dropdown:focus {
+    outline: none;
+    border: 1px solid #FFDB58;
+    
+}
+
+
+.btn-submit-new-show, .btn-add-film {
+    width: 10vw;
+    margin-top: 5vh;
+    height: 3vh;
+    
+}
+
+.btn-cancel {
+    width: 10vw;
+    margin-top: 2vh;
+    height: 3vh;
 
 }
 

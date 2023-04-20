@@ -1,16 +1,89 @@
+.edit-section {
+    position: fixed;
+    top: 14%;
+    z-index: 3;
+    left: 0;
+    bottom: 10;
+    border-radius: 10px;
+
+
+}
+
+.film-details, .tv-details {
+
+    position: fixed;
+    top: 15%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    left: 2%;
+    right: 2%;
+    border-radius: 10px;
+
+/*    
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    
+    flex-direction: column;
+    align-items: flex-end;
+    width: 90vw;
+    height: 85%;
+  
+    top: 15%;
+    left: 5%;
+    right: 5%;
+    border-radius: 10px; */
+    
+}
+
+.btn-close-details {
+    display: flex;
+    align-items: start;
+    text-align: right;
+    justify-content: right;
+    height: 1vh;
+}
+
+.btn-close-details-overlay{
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    margin-right: -0.5vw;
+}
+
+.btn-close-details-overlay:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+
+
+
 .details-poster {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
 }
 
-.details-poster-img, .poster-not-available {
+.film-card .details-poster .details-poster-img, .film-card .details-poster .poster-not-available {
     border-radius: 15px;
-    width: 70%;
+    width: 65%;
     height: auto;
     border: 8px solid darkred;
     
     
+}
+
+.tv-card .details-poster .details-poster-img, .tv-card .details-poster .poster-not-available  {
+    border: 8px solid #6F5E3C;
+    border-radius: 15px;
+    width: 65%;
+    height: auto;
 }
 
 .details-container {
@@ -23,21 +96,25 @@
 .details-text {
     /* background-color: darkolivegreen; */
     text-align: left;
-    font-size: 1.25vw;
+    font-size: 1.1vw;
     background-color: darkred;
     border-radius: 10px;
-    width: 90%;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+    width: 100%;
+    display: grid;
     
-    
+}
+
+
+.details-column {
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .details-text li {
     list-style: none;
     padding-right: 2vw;
     padding-left: 2.5vw;
-    line-height: 170%;
+    line-height: 150%;
 
 }
 
@@ -48,7 +125,7 @@
 }
 
 .synopsis, .tagline, .p-countries, .details-text ul {
-    margin: 2vh auto;
+    margin: 1.5vh auto;
 }
 
 
@@ -63,14 +140,20 @@
     text-align: center;
     justify-content: center;
     gap: 3vw;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    width: 70%;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    width: 65%;
     background-color: darkred;
     border: 8px solid darkred;
 
     border-radius: 10px;
-    margin-top: 2vh;
+    margin-top: 1vh;
+}
+
+
+.tv-card .details-btns {
+    background-color: #6F5E3C;
+    border: 8px solid #6F5E3C;
 }
 
 .play-trailer-btn {

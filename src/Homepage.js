@@ -5,10 +5,12 @@ import FilmCard from './FilmCard.js'
 import TvCard from './TvCard.js'
 import './Homepage.css'
 
-export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatchList, onToWatchList, onWatchedList, unMarkAsWatched}) {
+export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatchList, onToWatchList, onWatchedList, unMarkAsWatched, editItem}) {
 
     const [trendingFilms, setTrendingFilms] = useState([])
     const [trendingTv, setTrendingTv] = useState([])
+
+   
 
     useEffect(() => {
         fetchTrendingFilms()
@@ -53,7 +55,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
                 <span className='trending-film-title'>Films</span>
                 <section className='results-section'>
                 {(trendingFilms.length !== 0) && <ul className='trending-films-list'>
-                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
+                    {trendingFilms.map(item => <FilmCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>)}
                     </ul>}
                 </section>
             </div>
@@ -61,7 +63,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
                 <span className='trending-tv-title'>Tv Shows</span>
                 <section className='results-section'>
                 {(trendingTv.length !== 0) && <ul className='trending-tv-list'>
-                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched}/>)}
+                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>)}
                     </ul>}
                 </section>
             </div>

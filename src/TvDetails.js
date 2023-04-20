@@ -121,7 +121,11 @@ export default function TvDetails({ onToWatchList, onWatchedList, addNewToWatch,
             return <li key={person.name}>{person.name}</li>})}
             </ul></li>}
 
+
           {item.type && <li key='type'><span className='details-title'>Show Type: </span>{item.type}</li>}
+          
+          
+          
           {item.tagline && <li key='tagline'><span className='details-title'>Tagline: </span>{item.tagline}</li>}
           {item.status && <li key='status'><span className='details-title'>Status: </span>{item.status}</li>}
           {item.genres && <li key='genres'><ul><span className='details-title'>Genres: </span>{item.genres.map((genre) => {
