@@ -1,10 +1,15 @@
-.edit-section {
+.edit-section, .edit-tv-section {
     position: fixed;
     top: 14%;
     z-index: 3;
     left: 0;
     border-radius: 10px;
 
+
+}
+
+.edit-tv-section {
+    left: 8%
 
 }
 

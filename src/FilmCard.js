@@ -9,7 +9,6 @@ export default function FilmCard({ setToWatchList, setWatchedList, item, addNewT
   const [showDetails, setShowDetails] = useState(false)
   const [displayItem, setDisplayItem] = useState(item)
   const [showEditForm, setShowEditForm] = useState(false)
-
   const [fetchedFilms, setFetchedFilms] = useState([])
 
   function handleAddToWatchList() {
@@ -46,6 +45,21 @@ export default function FilmCard({ setToWatchList, setWatchedList, item, addNewT
     }   
   }
 
+  function handleImgClicked() {
+    const fetchedIdList = fetchedFilms.map((item) => item.id)
+
+    if (item.user_entered === true) {
+      setDisplayItem(item)
+    } else if (fetchedIdList.includes(item.id)) {
+      setDisplayItem(fetchedFilms.find(fetchedFilm => fetchedFilm.id === item.id))
+    } else {
+      fetchFilm()
+      console.log('fetched film')
+    }
+  
+    setShowDetails(true)
+  }
+
   async function fetchFilm(){
     const res = await (await fetch(`https://api.themoviedb.org/3/movie/${item.id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
     .catch(err => console.log("Error with GET request:", err)))
@@ -54,21 +68,6 @@ export default function FilmCard({ setToWatchList, setWatchedList, item, addNewT
     setFetchedFilms([...fetchedFilms, res])
     console.log(res)
 }
-
-
-  async function handleImgClicked() {
-    const fetchedIdList = fetchedFilms.map((item) => item.id)
-    if (fetchedIdList.includes(item.id)) {
-      setDisplayItem(fetchedFilms.find(fetchedFilm => fetchedFilm.id === item.id))
-    } else if (item.user_entered) {
-      setDisplayItem(item)
-    } else {
-      fetchFilm()
-      console.log('fetched film')
-    }
-  
-    setShowDetails(true)
-  }
 
   function convertDate(american) {
     const euro = american.split('-')
@@ -98,8 +97,6 @@ if (item.poster_path){
 
   function handleEditClicked() {
     setShowEditForm(true)
-
-
   }
 
   function closeEditForm() {
@@ -109,8 +106,6 @@ if (item.poster_path){
   // const trailer = (detailsItem.videos ? detailsItem.videos.results.find(vid => vid.name.toLowerCase().includes('official trailer')) : false)
   // const trailerKey = (trailer ? trailer.key : false)
   const [showTrailer, setShowTrailer] = useState(false)
-
-
 
   return (
     <li className='film-card'>

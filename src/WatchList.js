@@ -59,16 +59,12 @@ export default function WatchList({ setWatchedList, toWatchList, setToWatchList,
   return (
     <div>
     <h1>Watchlist</h1>
-      <button className='btn btn-clear-to-watch' onClick={clearToWatch}>Clear List</button>
-      <button className='btn btn-clear-selected' onClick={handleClearSelected}>Clear selected</button>
-      {/*<button className='btn btn-mark-as-watched-selected' onClick={handleMarkSelectedWatched}>mark as watched</button>*/}
-      {/*<button className='btn btn-unmark-as-watched-selected'>unmark as watched selected</button>)*/}
-
-     
-   
-      {/*<button className='btn btn-edit'>edit</button>*/}
-      <button className='btn btn-create-new-item' onClick={handleNewFilm}>Add new Film</button>
-      <button className='btn btn-create-new-item' onClick={handleNewTv}>Add new Tv Show</button>
+      <div className='watchlist-btns'>
+        <button className='btn btn-clear-to-watch' onClick={clearToWatch}>Clear List</button>
+        <button className='btn btn-clear-selected' onClick={handleClearSelected}>Clear selected</button>
+        <button className='btn btn-create-new-item' onClick={handleNewFilm}>Add new Film</button>
+        <button className='btn btn-create-new-item' onClick={handleNewTv}>Add new Tv Show</button>
+      </div>
       <section className='new-item-form-section'>
       {showFilmForm && <NewFilmForm closeFilmForm={closeFilmForm} addNewToWatch={addNewToWatch} />}
       {showTvForm && <NewTvForm closeTvForm={closeTvForm} addNewToWatch={addNewToWatch} />}

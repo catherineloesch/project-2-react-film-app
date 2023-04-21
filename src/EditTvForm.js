@@ -2,26 +2,45 @@ import React from 'react'
 import { useState } from 'react';
 import './List.css'
 
-export default function EditFilmForm({ setShowDetails, fetchedFilms, setFetchedFilms, onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
+export default function EditTvForm({ setShowDetails, fetchedFilms, setFetchedFilms, onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
   
   console.log(item)
  
   const templateObj = {
 
     genres: item.genres,
+
     id: item.id,
-    original_language: item.original_language,
+    created_by: item.created_by,
+    first_air_date: item.first_air_date,
+    last_air_date: item.last_air_date,
     overview: item.overview,
+    tagline: item.tagline,
+    original_language: item.original_language,
+    spoken_languages: item.spoken_languages,
+    number_of_seasons: item.number_of_seasons,
+    number_of_episodes: item.number_of_episodes,
+    production_countries: item.production_countries,
+    production_companies: item.production_companies,
+    type: item.type,
+    status: item.status,
+    origin_country: item.origin_country,
+    networks: item.networks,
+    last_episode_to_air: {
+        season_number: item.season_number,
+        episode_number: item.episode_number,
+        name: item.name,
+        air_date: item.air_date,
+        runtime: item.runtime
+
+
+    },
     poster_path: item.poster_path,
     poster_link: item.poster_link,
-    production_companies: item.production_companies,
-    production_countries: item.production_countries,
-    release_date: item.release_date,
-    runtime: item.runtime,
-    spoken_languages: item.spoken_languages,
-    tagline: item.tagline,
-    title: item.title,
-    media_type: 'movie',
+
+    
+    name: item.name,
+    media_type: 'tv',
     user_entered: item.user_entered,
     videos: item.videos
 
@@ -83,6 +102,32 @@ function handleCountryField(e, index) {
 }
 
 
+const [networkFields, setNetworkFields] = useState(formData.networks)
+function addNetworkField(){
+ setNetworkFields([...networkFields, {name: ''}])
+}
+
+
+function removeNetworkField(index) {
+  if (index > 0) {
+    const fields = [...networkFields]
+    fields.splice(index, 1)
+    setNetworkFields(fields)
+  }
+
+
+}
+
+function handleNetworkField(e, index) {
+  const data = [...countryFields]
+  data[index] = {name: e.target.value}
+  setNetworkFields(data);
+  const newInput = {...formData}
+  newInput[e.target.name] = data
+  setFormData(newInput)
+}
+
+
 const [languageFields, setLanguageFields] = useState(formData.spoken_languages)
 function addLangField(){
  setLanguageFields([...languageFields, {name: ''}])
@@ -107,7 +152,40 @@ function handleLangField(e, index) {
  }
 
 
+
+ const [createdByFields, setCreatedByFields] = useState(formData.created_by)
+ function addCreatedByField(){
+  setCreatedByFields([...createdByFields, {name: ''}])
+ }
+ 
+ function removeCreatedBy(index) {
+   if (index > 0) {
+     const fields = [...createdByFields]
+     fields.splice(index, 1)
+     setCreatedByFields(fields)
+   }
+ 
+ }
+ 
+ function handleCreatedByField(e, index) {
+   const data = [...createdByFields]
+   data[index] = {name: e.target.value}
+   setCreatedByFields(data);
+   const newInput = {...formData}
+   newInput[e.target.name] = data
+   setFormData(newInput)
+  } 
+
+
+
+
+
+
+
 const [genres, setGenres] = useState(formData.genres)
+
+
+
 
 
 function addGenre(){
@@ -130,6 +208,27 @@ function handleGenres(e, index) {
   newInput[e.target.name] = data
   setFormData(newInput)
 }
+
+
+const [lastEpisodeData, setLastEpisodeData] = useState({
+    season_number: formData.last_episode_to_air.season_number,
+    episode_number: formData.last_episode_to_air.episode_number,
+    name: formData.last_episode_to_air.name,
+    air_date: formData.last_episode_to_air.air_date,
+    runtime: formData.last_episode_to_air.runtime,
+})
+
+
+function handleLastEpisodeChange(e) {
+    const lastEp = {...lastEpisodeData, [e.target.name]: e.target.value}
+    console.log(lastEp)
+    setLastEpisodeData(lastEp)
+  
+    const newInput = {...formData, ['last_episode_to_air']: lastEpisodeData}
+        console.log(newInput)
+        setFormData(newInput)        
+}
+
 
 function handleFormSubmit(e) {
   e.preventDefault()
@@ -166,33 +265,32 @@ function handleFormSubmit(e) {
 
 
   return (
-    <div className='form-div edit-film-form'>
+    <div className='form-div'>
     <form className='new-film-form' onSubmit={handleFormSubmit}>
-    <h1 className='form-title'>Edit Film</h1>
-    <div className='new-film-form-columns'>
+    <h1 className='edit-tv-form-title'>Edit Tv Show</h1>
+    <div className='edit-tv-form-columns'>
     <ul>
-      <li>Title: <input name='title' onChange={handleFormChange} value={formData.title}></input></li>
+      <li>Title: <input name='name' onChange={handleFormChange} value={formData.name}></input></li>
       
-      <li>Release Date: <input name='release_date' placeholder='DD/MM/YYYY' onChange={handleFormChange} value={formData.release_date}></input></li>
-      <li>Runtime: <input name='runtime' value={formData.runtime} onChange={handleFormChange}></input></li>
       <li><div className='synopsis'>Synopsis: <textarea name='overview' value={formData.overview} onChange={handleFormChange}></textarea></div></li>
-
       <li>Tagline: <input name='tagline' value={formData.tagline} onChange={handleFormChange}></input></li>
 
-      <li>Original Language: <input name='original_language' value={formData.original_language} onChange={handleFormChange}></input>
-      </li>
+      <li>First Air Date: <input name='first_air_date' placeholder='DD/MM/YYYY' value={formData.first_air_date} onChange={handleFormChange}></input></li>
+      <li>Last Air Date: <input name='last_air_date' placeholder='DD/MM/YYYY' value={formData.last_air_date} onChange={handleFormChange}></input></li>
+      <li>Status: <input name='status' value={formData.status} onChange={handleFormChange}></input></li>
 
-      <li>Spoken Languages:
+       <li>Created By:
 
-      {languageFields.map((field, index) => {
+      {createdByFields.map((field, index) => {
         return (<div key={index}>
-        <input name='spoken_languages' value={field.name} onChange={(e) => handleLangField(e, index)}></input>
-        <button type="button" className='btn input-btn' onClick={addLangField}>+</button>
-        <button type="button" className='btn input-btn' onClick={() => removeLangField(index)}>-</button>
+        <input name='created_by' value={field.name} onChange={(e) => handleCreatedByField(e, index)}></input>
+        <button type="button" className='btn input-btn' onClick={addCreatedByField}>+</button>
+        <button type="button" className='btn input-btn' onClick={() => removeCreatedBy(index)}>-</button>
         </div>)
-      })}
+      })}   </li>
+ 
 
-      </li>
+
 
 
     </ul>
@@ -229,6 +327,19 @@ function handleFormSubmit(e) {
       </div>)
     })}
 
+
+    <li>Networks:
+
+    {networkFields.map((field, index) => {
+      return (<div key={index}>
+      <input name="networks" value={field.name} onChange={(e) => handleNetworkField(e, index)}></input>
+      <button type="button" className='btn input-btn' onClick={addNetworkField}>+</button>
+      <button type="button" className='btn input-btn' onClick={() => removeNetworkField(index)} >-</button>
+      </div>)
+    })}
+
+    </li>
+
     
 
     </li>
@@ -245,6 +356,7 @@ function handleFormSubmit(e) {
 
       </li>
 
+      <li>Origin Country: <input name='origin_country' value={formData.origin_country} onChange={handleFormChange}></input></li>
 
 
       <li>Production Countries:
@@ -259,13 +371,33 @@ function handleFormSubmit(e) {
 
       </li>
 
-   
-   
+  
+      </ul>
+      <ul>
+      <li>Type: <input name='type' value={formData.type} onChange={handleFormChange}></input></li>
+
+      <li>Number of Seasons: <input name='number_of_seasons' value={formData.number_of_seasons} onChange={handleFormChange}></input></li>
+      <li>Number of Episodes: <input name='number_of_episodes' value={formData.number_of_episodes} onChange={handleFormChange}></input></li>
+    
+      <li>Original Language: <input name='original_language' value={formData.original_language} onChange={handleFormChange}></input>
+      </li>
+
+      <li>Spoken Languages:
+
+      {languageFields.map((field, index) => {
+        return (<div key={index}>
+        <input name='spoken_languages' value={field.name} onChange={(e) => handleLangField(e, index)}></input>
+        <button type="button" className='btn input-btn' onClick={addLangField}>+</button>
+        <button type="button" className='btn input-btn' onClick={() => removeLangField(index)}>-</button>
+        </div>)
+      })}
+
+      </li>
    
       <li>Image URL: <input name='poster_link' value={item.user_entered ? formData.poster_link : formData.poster_path} onChange={handleFormChange}></input>
       </li>
     
-      <button className='btn btn-submit-new-show' type="submit">Save Changes</button>
+      <button className='btn btn-edit-show' type="submit">Save Changes</button>
       <button className='btn btn-cancel' type="button" onClick={closeEditForm}>Cancel</button>
     
     

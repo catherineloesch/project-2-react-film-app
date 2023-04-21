@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import notAvailable from './assets/posterNotAvailable2.jpg'
 import './Card.css'
 import { tmdbKey } from './api'
+import EditTvForm from './EditTvForm'
 
 
-export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched, editItem, toWatchList,  watchedList}) {
+export default function TvCard({ setToWatchList, setWatchedList, item, addNewToWatch, markAsWatched, onToWatchList, removeFromWatchList, onWatchedList, unMarkAsWatched, editItem, toWatchList,  watchedList}) {
   const [showDetails, setShowDetails] = useState(false)
-  const [detailsItem, setdetailsItem] = useState(item)
+  const [displayItem, setDisplayItem] = useState(item)
+  const [showEditForm, setShowEditForm] = useState(false)
+  const [fetchedTvShows, setFetchedTvShows] = useState([])
 
   function handleAddToWatchList() {
     addNewToWatch(item)
@@ -33,9 +36,6 @@ export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchLi
     }
   }
 
-
-
-
   function processDate(date) {
     if (item.user_entered) {
       return date.slice(-4)
@@ -44,23 +44,33 @@ export default function TvCard({ item, addNewToWatch, markAsWatched, onToWatchLi
 
     }   
   }
+
+  async function handleImgClicked() {
+    const fetchedIdList = fetchedTvShows.map((item) => item.id)
+
+ 
+    if (item.user_entered === true) {
+      setDisplayItem(item)
+    } else if (fetchedIdList.includes(item.id)) {
+      setDisplayItem(fetchedTvShows.find(fetchedTv => fetchedTv.id === item.id))
+    } else {
+      fetchTvShow()
+      console.log('fetched show')
+    }
+  
+    setShowDetails(true)
+  }
+
+
+
   async function fetchTvShow(){
     const res = await (await fetch(`https://api.themoviedb.org/3/tv/${item.id}?api_key=${tmdbKey}&append_to_response=videos&language=en-US`)
     .catch(err => console.log("Error with GET request:", err)))
     .json()
-    setdetailsItem(res)
+    setDisplayItem(res)
+    setFetchedTvShows([...fetchedTvShows, res])
     console.log(res)
 }
-
-
-  async function handleImgClicked() {
-    if (!item.user_entered) {
-      fetchTvShow()
-      console.log('fetched tv show')
-
-    }
-    setShowDetails(true)
-  }
 
   function convertDate(american) {
     const euro = american.split('-')
@@ -88,12 +98,18 @@ if (item.poster_path){
     setShowTrailer(false)
   }
 
+
+  function handleEditClicked() {
+    setShowEditForm(true)
+  }
+
+  function closeEditForm() {
+    setShowEditForm(false)
+  }
+
   // const trailer = (detailsItem.videos ? detailsItem.videos.results.find(vid => vid.name.toLowerCase().includes('official trailer')) : false)
   // const trailerKey = (trailer ? trailer.key : false)
   const [showTrailer, setShowTrailer] = useState(false)
-
-
-
 
 
   return (
@@ -167,6 +183,9 @@ if (item.poster_path){
                   <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 12 12"><path fill="black" d="M6.5 1.75a.75.75 0 0 0-1.5 0V5H1.75a.75.75 0 0 0 0 1.5H5v3.25a.75.75 0 0 0 1.5 0V6.5h3.25a.75.75 0 0 0 0-1.5H6.5V1.75Z"/></svg>
               </button>}
 
+              <button className='btn edit-btn' onClick={handleEditClicked}>edit</button>
+
+
             {/* button - play trailer */}
               <button className='btn play-trailer-btn' onClick={handleOpenTrailer}>Watch Trailer</button>
           </div>
@@ -179,29 +198,29 @@ if (item.poster_path){
       
         <li key='title'><span className='details-title'>Title:&nbsp;</span>{item.name}</li>
 
-        {detailsItem.first_air_date && <li key='first-date'><span className='details-title'>First Air Date: </span>{convertDate(detailsItem.first_air_date)}</li>}
-        {detailsItem.last_air_date && <li key='last-date'><span className='details-title'>Last Air Date: </span>{convertDate(detailsItem.last_air_date)}</li>}
+        {displayItem.first_air_date && <li key='first-date'><span className='details-title'>First Air Date: </span>{convertDate(displayItem.first_air_date)}</li>}
+        {displayItem.last_air_date && <li key='last-date'><span className='details-title'>Last Air Date: </span>{convertDate(displayItem.last_air_date)}</li>}
 
-        {detailsItem.overview && <li key='synopsis' className='synopsis'><span className='details-title'>Synopsis:&nbsp; </span>{detailsItem.overview}</li>}
-        {detailsItem.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline: </span>{detailsItem.tagline}</li>}
+        {item.overview && <li key='synopsis' className='synopsis'><span className='details-title'>Synopsis:&nbsp; </span>{item.overview}</li>}
+        {displayItem.tagline && <li key='tagline' className='tagline'><span className='details-title'>Tagline: </span>{displayItem.tagline}</li>}
 
 
-        {detailsItem.original_language && <li key='og-lang'><span className='details-title'>Original Language: </span>{detailsItem.original_language}</li>}
+        {displayItem.original_language && <li key='og-lang'><span className='details-title'>Original Language: </span>{displayItem.original_language}</li>}
 
-        {detailsItem.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{detailsItem.spoken_languages.map((lang) => {
+        {displayItem.spoken_languages && <li key='spoken'><ul className='details-ul'><span className='details-title'>Spoken Languages: </span>{displayItem.spoken_languages.map((lang) => {
           return <li key={lang.name}>{lang.name}</li>})}
           </ul></li>}
 
 
 
-        {detailsItem.number_of_seasons && <li key='num-seasons'><span className='details-title'>Number of Seasons: </span>{detailsItem.number_of_seasons}</li>}
-        {detailsItem.number_of_episodes && <li key='num-episodes'><span className='details-title'>Number of Episodes: </span>{detailsItem.number_of_episodes}</li>}
+        {displayItem.number_of_seasons && <li key='num-seasons'><span className='details-title'>Number of Seasons: </span>{displayItem.number_of_seasons}</li>}
+        {displayItem.number_of_episodes && <li key='num-episodes'><span className='details-title'>Number of Episodes: </span>{displayItem.number_of_episodes}</li>}
 
         
-        {detailsItem.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{detailsItem.production_countries.map((country) => {
+        {displayItem.production_countries && <li key='prod-countries'><ul className='details-ul'><span className='details-title'>Production Countries:&nbsp;</span>{displayItem.production_countries.map((country) => {
           return <li key={country.name}>{country.name}</li>})}
         </ul></li>}
-      {detailsItem.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{detailsItem.production_companies.map((company) => {
+      {displayItem.production_companies && <li key='prod-companies'><ul className='details-ul'><span className='details-title'>Production Companies:&nbsp;</span>{displayItem.production_companies.map((company) => {
           return <li key={company.name}>{company.name}</li>})}
           </ul></li>}
       
@@ -211,33 +230,33 @@ if (item.poster_path){
     </ul>
     <ul>
 
-    {detailsItem.created_by && <li key='created-by'><ul className='details-ul'><span className='details-title'>Created by: </span>{detailsItem.created_by.map((person) => {
+    {displayItem.created_by && <li key='created-by'><ul className='details-ul'><span className='details-title'>Created by: </span>{displayItem.created_by.map((person) => {
       return <li key={person.name}>{person.name}</li>})}
       </ul></li>}
-    {detailsItem.type && <li key='type'><span className='details-title'>Show Type: </span>{detailsItem.type}</li>}
-    {detailsItem.status && <li key='status'><span className='details-title'>Status: </span>{detailsItem.status}</li>}
+    {displayItem.type && <li key='type'><span className='details-title'>Show Type: </span>{displayItem.type}</li>}
+    {displayItem.status && <li key='status'><span className='details-title'>Status: </span>{displayItem.status}</li>}
 
-    {detailsItem.origin_country && <li key='og-country'><span className='details-title'>Origin Country: </span>{detailsItem.origin_country}</li>}
+    {displayItem.origin_country && <li key='og-country'><span className='details-title'>Origin Country: </span>{displayItem.origin_country}</li>}
     
-    {detailsItem.networks && <li key='networks'><ul className={'details-ul'}><span className='details-title'>Networks: </span>{detailsItem.networks.map((network) => {
+    {displayItem.networks && <li key='networks'><ul className={'details-ul'}><span className='details-title'>Networks: </span>{displayItem.networks.map((network) => {
       return <li key={network.name}>{network.name}</li>})}
       </ul></li>}
 
-    {detailsItem.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{detailsItem.genres.map((genre) => {
+    {displayItem.genres && <li key='genres'><ul className='details-ul'><span className='details-title'>Genres: </span>{displayItem.genres.map((genre) => {
       return <li key={genre.name}>{genre.name}</li>})}
       </ul></li>}
 
     
-        {detailsItem.last_episode_to_air && <li key='last-episode'><ul className='details-ul'><span className='details-title'>Last Episode to air: 
-          {detailsItem.last_episode_to_air.season_number && <span> S{detailsItem.last_episode_to_air.season_number}</span>}
-          {detailsItem.last_episode_to_air.episode_number && <span> E{detailsItem.last_episode_to_air.episode_number}</span>}
+        {displayItem.last_episode_to_air && <li key='last-episode'><ul className='details-ul'><span className='details-title'>Last Episode to air: 
+          {displayItem.last_episode_to_air.season_number && <span> S{displayItem.last_episode_to_air.season_number}</span>}
+          {displayItem.last_episode_to_air.episode_number && <span> E{displayItem.last_episode_to_air.episode_number}</span>}
 
         
         
         </span>
-        {detailsItem.last_episode_to_air.name && <li key='last-name'>Title: {detailsItem.last_episode_to_air.name}</li>}
-        {detailsItem.last_episode_to_air.air_date && <li key='last-ep-air-date'>Air Date: {convertDate(detailsItem.last_episode_to_air.air_date)}</li>}
-        {detailsItem.last_episode_to_air.runtime && <li key='last-ep-runtime'>Runtime: {detailsItem.last_episode_to_air.runtime} mins</li>}
+        {displayItem.last_episode_to_air.name && <li key='last-name'>Title: {displayItem.last_episode_to_air.name}</li>}
+        {displayItem.last_episode_to_air.air_date && <li key='last-ep-air-date'>Air Date: {convertDate(displayItem.last_episode_to_air.air_date)}</li>}
+        {displayItem.last_episode_to_air.runtime && <li key='last-ep-runtime'>Runtime: {displayItem.last_episode_to_air.runtime} mins</li>}
         </ul></li>}
 
 
@@ -247,7 +266,8 @@ if (item.poster_path){
     </div>
   </section>
   </section>}
-      
+  {showEditForm && <section className='edit-tv-section'><EditTvForm setShowDetails={setShowDetails} fetchedTvShows={fetchedTvShows} setFetchedTvShows={setFetchedTvShows} setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
+
     </li>
 
   )
