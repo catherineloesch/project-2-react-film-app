@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project-2-react-film-app/static/css/main.fa0b4b1d.css",
-    "main.js": "/project-2-react-film-app/static/js/main.aba21691.js",
+    "main.css": "/project-2-react-film-app/static/css/main.0750a45f.css",
+    "main.js": "/project-2-react-film-app/static/js/main.a2b22a4c.js",
     "static/media/ronSwanson.gif": "/project-2-react-film-app/static/media/ronSwanson.c93871a62b9d945b76c8.gif",
     "static/media/pulpfiction.jpg": "/project-2-react-film-app/static/media/pulpfiction.9abb0a32daf8356396d8.jpg",
     "static/media/UpperEastSide-webfont.woff": "/project-2-react-film-app/static/media/UpperEastSide-webfont.1af572b7f5b12c3e7217.woff",
@@ -11,11 +11,11 @@
     "static/media/CaviarDreams-webfont.woff": "/project-2-react-film-app/static/media/CaviarDreams-webfont.921ef7ca1af365ffb313.woff",
     "static/media/posterNotAvailable2.jpg": "/project-2-react-film-app/static/media/posterNotAvailable2.355d938eb208fe8ca84b.jpg",
     "index.html": "/project-2-react-film-app/index.html",
-    "main.fa0b4b1d.css.map": "/project-2-react-film-app/static/css/main.fa0b4b1d.css.map",
-    "main.aba21691.js.map": "/project-2-react-film-app/static/js/main.aba21691.js.map"
+    "main.0750a45f.css.map": "/project-2-react-film-app/static/css/main.0750a45f.css.map",
+    "main.a2b22a4c.js.map": "/project-2-react-film-app/static/js/main.a2b22a4c.js.map"
   },
   "entrypoints": [
-    "static/css/main.fa0b4b1d.css",
-    "static/js/main.aba21691.js"
+    "static/css/main.0750a45f.css",
+    "static/js/main.a2b22a4c.js"
   ]
 }
