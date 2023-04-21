@@ -129,7 +129,7 @@ I also got a key for the TMDB database to retrieve the data and set up the basic
 
 ### Day 3 - 16/04/2023
 
-On the third day I added more CSS to the homepage and made it display some trending tv shows and movies. I also made the film and tv items appear in different colours so they're easily distinguishable.
+On the third day I added more CSS to the homepage and made it display some trending tv shows and movies. I also made the film and tv items appear in different colours so they're easily distinguishable. I also read up on useEffect so I could load API data when the page first loads without repeated re-loads.
 
 ### Day 4 - 17/04/2023
 
@@ -141,7 +141,11 @@ On the fifth day I deployed my project on GitHub pages.
 
 ### Day 6 - 19/04/2023
 
+forms for user to input movies and tv shows that are not part of the API
+
 ### Day 7 - 20/04/2023
+
+form for editing movie
 
 ### Day 8 - 21/04/2023 - Deadline 9:00AM
 
@@ -149,10 +153,12 @@ On the fifth day I deployed my project on GitHub pages.
 
 - dealing with getting stuck
 - getting project deployed on github pages
+- forms for editing items
 
 ## 9. Wins
 
 - using a public API to retrieve data
+- adding/removing things from watchlist
 
 ## 10. Key Learnings & Takeaways
 
@@ -163,6 +169,8 @@ On the fifth day I deployed my project on GitHub pages.
 - This project also taught me that getting stuck while builing an application is normal
 
 - studing error messages carefully can help improve my code and make it more robust
+
+- planning different react components and props chain more carefully before starting to build them
 
 ## 11. Future Improvements
 

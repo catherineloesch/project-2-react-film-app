@@ -218,7 +218,7 @@ if (item.poster_path){
     </div>
   </section>
   </section>}
-  {showEditForm && <section className='edit-section'><EditFilmForm setShowDetails={setShowDetails} fetchedFilms={fetchedFilms} setFetchedFilms={setFetchedFilms} setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
+  {showEditForm && <section className='edit-section' id='edit-film-section'><EditFilmForm setShowDetails={setShowDetails} fetchedFilms={fetchedFilms} setFetchedFilms={setFetchedFilms} setWatchedList={setWatchedList} setToWatchList={setToWatchList} item={displayItem} closeEditForm={closeEditForm} editItem={editItem} watchedList={watchedList} toWatchList={toWatchList} onWatchedList={onWatchedList} onToWatchList={onToWatchList}/></section>}
       
     </li>
 

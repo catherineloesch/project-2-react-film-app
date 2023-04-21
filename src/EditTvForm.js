@@ -2,14 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import './List.css'
 
-export default function EditTvForm({ setShowDetails, fetchedFilms, setFetchedFilms, onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
+export default function EditTvForm({ setShowDetails, fetchedTvShows, setFetchedTvShows, onWatchedList, onToWatchList, item, setWatchedList, setToWatchList, addNewToWatch, closeEditForm, editItem, toWatchList, watchedList}) {
   
   console.log(item)
  
   const templateObj = {
 
     genres: item.genres,
-
     id: item.id,
     created_by: item.created_by,
     first_air_date: item.first_air_date,
@@ -50,7 +49,6 @@ const [formData, setFormData] = useState(templateObj)
 
 function handleFormChange(e) {
     const newInput = {...formData, [e.target.name]: e.target.value}
-    console.log(newInput)
     setFormData(newInput)
 }
 
@@ -232,26 +230,26 @@ function handleLastEpisodeChange(e) {
 
 function handleFormSubmit(e) {
   e.preventDefault()
-  const fetchedIdList = fetchedFilms.map((fetchedFilm) => fetchedFilm.id)
+  const fetchedIdList = fetchedTvShows.map((fetchedShow) => fetchedShow.id)
   let newArr
   if (fetchedIdList.includes(item.id)) {
-    newArr = fetchedFilms.map(movie => {
-      if (movie.id === item.id) {
+    newArr = fetchedTvShows.map(show => {
+      if (show.id === item.id) {
         return formData
       } else {
-        return movie
+        return show
       }
     })
-    setFetchedFilms(newArr)
+    setFetchedTvShows(newArr)
   }
 
 
   if (onToWatchList(item)) {
-     newArr = toWatchList.map(movie => {
-    if (movie.id === item.id) {
+     newArr = toWatchList.map(show => {
+    if (show.id === item.id) {
       return formData
     } else {
-      return movie
+      return show
     }
     })
     setToWatchList(newArr)
@@ -301,25 +299,22 @@ function handleFormSubmit(e) {
       return (<div key={index}>
 
       <select key={index} name="genres" className='btn-dropdown' value={genre.name} onChange={(e) => handleGenres(e, index)}>
-        <option value={'Action'}>Action</option>
-        <option value={'Adventure'}>Adventure</option>
+        <option value={'Action & Adventure'}> Action & Adventure,</option>
         <option value={'Animation'}>Animation</option>
         <option value={'Comedy'}>Comedy</option>
         <option value={'Crime'}>Crime</option>
         <option value={'Documentary'}>Documentary</option>
         <option value={'Drama'}>Drama</option>
         <option value={'Family'}>Family</option>
-        <option value={'Fantasy'}>Fantasy</option>
-        <option value={'History'}>History</option>
-        <option value={'Horror'}>Horror</option>
-        <option value={'Music'}>Music</option>
+        <option value={'Kids'}>Kids</option>
         <option value={'Mystery'}>Mystery</option>
-        <option value={'Romance'}>Romance</option>
-        <option value={'Science Fiction'}>Science Fiction</option>
-        <option value={'Thriller'}>Thriller</option>
-        <option value={'War'}>War</option>
+        <option value={'News'}>Mystery</option>
+        <option value={'Reality'}>Mystery</option>
+        <option value={'Soap'}>Mystery</option>
+        <option value={'Talk'}>Mystery</option>
+        <option value={'Sci-Fi & Fantasy'}>Sci-Fi & Fantasy</option>
+        <option value={'War & Politics'}>War & Politics</option>
         <option value={'Western'}>Western</option>
-
       </select>
       
       <button type="button" className='btn input-btn' onClick={addGenre}>+</button>
@@ -396,9 +391,10 @@ function handleFormSubmit(e) {
    
       <li>Image URL: <input name='poster_link' value={item.user_entered ? formData.poster_link : formData.poster_path} onChange={handleFormChange}></input>
       </li>
-    
+    <div className='edit-tv-btns'>
       <button className='btn btn-edit-show' type="submit">Save Changes</button>
       <button className='btn btn-cancel' type="button" onClick={closeEditForm}>Cancel</button>
+    </div>
     
     
   </ul>

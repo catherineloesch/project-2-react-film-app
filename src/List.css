@@ -5,13 +5,6 @@
     gap: 1vw;
 }
 
-/* <div className='form-div'>
-<form className='new-film-form' onSubmit={handleFormSubmit}>
-<h1 className='form-title'>Edit Film</h1>
-<div className='new-film-form-columns'> */
-
-
-
 
 .btn-create-new-item, .btn-create-new-item, .btn-clear-selected, .btn-clear-to-watch {
     background-color: #ffefb4;
@@ -93,7 +86,7 @@
 
 .new-film-form ul li, .new-tv-form ul li {
     list-style: none;
-    margin: 2vh auto;
+    margin: 1vh auto;
 
 }
 
@@ -264,4 +257,9 @@
 .edit-film-form {
  margin: auto 8vw;
  padding: 0; 
+}
+
+#edit-film-form {
+    height: 75vh;
+
 }

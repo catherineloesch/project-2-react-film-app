@@ -1,10 +1,16 @@
 .edit-section, .edit-tv-section {
     position: fixed;
+
     top: 14%;
     z-index: 3;
     left: 0;
     border-radius: 10px;
 
+
+}
+
+#edit-film-section {
+    height: 50%;
 
 }
 
@@ -51,7 +57,7 @@
     height: 1vh;
 }
 
-.btn-close-details-overlay{
+.btn-close-details-overlay {
     color: white;
     background-color: black;
     border: 1px solid white;
@@ -151,7 +157,7 @@
     border: 8px solid darkred;
 
     border-radius: 10px;
-    margin-top: 1vh;
+    margin-top: 0.25vh;
 }
 
 
@@ -160,7 +166,7 @@
     border: 8px solid #6F5E3C;
 }
 
-.play-trailer-btn {
+.play-trailer-btn, .edit-btn {
     
     /* font-family: "caviar_dreams","Source Sans Pro", sans-serif; */
     background-color: #FFDB58;
@@ -172,7 +178,7 @@
 
 }
 
-.play-trailer-btn:hover {
+.play-trailer-btn:hover, .edit-btn:hover {
     cursor: pointer;
     transform: scale(1.05);
     background-color: darkred;

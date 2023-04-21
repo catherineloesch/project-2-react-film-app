@@ -64,7 +64,7 @@ export default function Homepage({ addNewToWatch, markAsWatched, removeFromWatch
                 <span className='trending-tv-title'>Tv Shows</span>
                 <section className='results-section'>
                 {(trendingTv.length !== 0) && <ul className='trending-tv-list'>
-                    {trendingTv.map(item => <TvCard key={item.id} item={item} mediaType={'tv'} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>)}
+                    {trendingTv.map(item => <TvCard key={item.id} item={item} addNewToWatch={addNewToWatch} markAsWatched={markAsWatched} onToWatchList={onToWatchList} removeFromWatchList={removeFromWatchList} onWatchedList={onWatchedList} unMarkAsWatched={unMarkAsWatched} editItem={editItem}/>)}
                     </ul>}
                 </section>
             </div>

@@ -31,7 +31,6 @@ const [formData, setFormData] = useState(templateObj)
 
 function handleFormChange(e) {
     const newInput = {...formData, [e.target.name]: e.target.value}
-    console.log(newInput)
     setFormData(newInput)
 }
 
@@ -167,9 +166,9 @@ function handleFormSubmit(e) {
 
   return (
     <div className='form-div edit-film-form'>
-    <form className='new-film-form' onSubmit={handleFormSubmit}>
+    <form className='new-film-form' id='edit-film-form' onSubmit={handleFormSubmit}>
     <h1 className='form-title'>Edit Film</h1>
-    <div className='new-film-form-columns'>
+    <div className='new-film-form-columns edit-film-columns'>
     <ul>
       <li>Title: <input name='title' onChange={handleFormChange} value={formData.title}></input></li>
       
