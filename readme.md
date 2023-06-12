@@ -218,9 +218,8 @@ On the final day, I presented the project to my cohort and submitted my work.
 
 ## 8. Challenges
 
-- dealing with getting stuck
-- getting project deployed on github pages
-- forms for editing items
+- The most difficult part about this project was dealing with getting stuck. I realised that spending too much time with an issue without taking a step away
+- Another issue I encountered was when editing items in a list. Originally they wouldn't update immediatedly in the list and it would take changing tabs for changes to show up. One of the instructors then pointed out that I was not passing the setState function down as props and once I did that if fixed the lagging issue.
 
 ## 9. Wins
 
