@@ -21,24 +21,35 @@ The user can add movies to a 'watched' and 'to-watch' list, mark them as watched
 
 <br>
 
-<img src='./assets/homepage.jpg' >
-<img src='./assets/watchlist.jpg' >
+<img src='./src/assets/homepage.jpg' >
+<img src='./src/assets/watchlist.jpg' >
 
 ---
 
 ## 2. Deployment link
 
 - The project is hosted online on GitHub pages: https://catherineloesch.github.io/project-2-react-film-app/
-- Git Repository: https://github.com/catherineloesch/project-2-react-film-app
-- issue tracker: https://github.com/catherineloesch/project-2-react-film-app/issues
 
 ## 3. Installation
 
-- 'install react router'
+- package manager used: npm - v9.6.7
+  - https://www.npmjs.com/package/npm
+- to install dependencies, run:
+
+```zsh
+npm install
+```
 
 ## 4. Technologies Used
 
-This application is based in ReactJS, JavaScript, JSX and CSS.
+This application is based in ReactJS(v18.2.0), JavaScript, JSX and CSS.
+
+Additional components:
+
+- react-router (v6.10.0)
+  - https://www.npmjs.com/package/react-router
+- react-youtube (v10.1.0)
+  - https://www.npmjs.com/package/react-youtube
 
 ### Additional tools used:
 
@@ -47,12 +58,6 @@ This application is based in ReactJS, JavaScript, JSX and CSS.
 - Google Chrome Web Browser: used for launching the website and displaying the application
   Google Chrome Developer Tools: For troubleshooting and debugging
 - Git/GitHub (for version control) and Github pages(for deployment)
-- React Router
-
-  - https://reactrouter.com/en/main
-
-- React Youtube
-  - https://www.npmjs.com/package/react-youtube
 
 ### External web resources:
 
@@ -67,20 +72,19 @@ This application is based in ReactJS, JavaScript, JSX and CSS.
 
 ## 5. Deliverables
 
-- Build a web application from scratch
-- Use React with create-react-app to build application.
+- Build a web application from scratch using the create-react-app command.
 - Plan application using wireframes and user stories
 - Deploy app online to GitHub Pages, Surge, or any hosting service
 - the user must be able to:
   - Add a new item to a list
-  - Mark the item as complete/favorite/(watch, read, listen) later/flag/etc
+  - Mark the item as complete/favourite/(watch, read, listen) later/flag/etc
   - Edit an item from a list
   - Remove an item from a list
   - Clear/delete all items
   - Clear/delete only marked items
-  - Fetch data from at least one 3rd party API using Axios or fetch.
-  - Make frequent Git commits with descriptive messages, explaining your commit.
-  - Use React Router to handle multiple pages/views.
+- Fetch data from at least one 3rd party API using Axios or fetch.
+- Make frequent Git commits with descriptive messages, explaining your commit.
+- Use React Router to handle multiple pages/views.
 
 ### Potential Extra Features
 
@@ -106,9 +110,11 @@ This application is based in ReactJS, JavaScript, JSX and CSS.
 
 ## 6. Planning
 
-<img src='./assets/wireframe1.jpg' >
-<img src='./assets/wireframe2.jpg' >
-<img src='./assets/wireframe3.jpg' >
+The plan was to create an intuitive and simple interface where the user can see the cover images of movies and tv shows so they can start adding different titles to their watchlist:
+
+<img src='./src/assets/wireframe1.jpg' >
+<img src='./src/assets/wireframe2.jpg' >
+<img src='./src/assets/wireframe3.jpg' >
 
 ---
 
@@ -118,36 +124,97 @@ This application is based in ReactJS, JavaScript, JSX and CSS.
 
 After brainstorming project ideas, I decided to settle on an application that enables the user to make lists of movies and tv shows they want to watch or have seen before.
 I then proceeded to creating a wireframe on figma and looked into different entertainment APIs and decided on TMDB (the Movie Database).
+https://www.themoviedb.org/?language=en-GB
 
-After initialising a git repo used the 'create-react-app' and 'install react router' to start the application. I also ran the 'install react rout
+After initialising a git repo, I started building the application using the 'create-react-app' command and also installed react router:
+
+```zsh
+npx create-react-app project-2-react-fil-app
+npm install react-router
+
+```
 
 ### Day 2 - 15/04/2023
 
-On the second day I set up react router for the different pages. I set up 4 different pages: - homepage - watchlist - watched list - search
+On the second day I set up react router for 4 the different pages:
 
-I also got a key for the TMDB database to retrieve the data and set up the basic structure and css for my application.
+- homepage
+- watchlist
+- watched list
+- search
+
+I then requested a key for the TMDB database to retrieve the data and set up the basic layout and css for my application.
+I also searched for some custom fonts on fontsquirrel and decided on 2 fonts that I felt would suit my project: Caviar Dreams and Upper East Side.
 
 ### Day 3 - 16/04/2023
 
-On the third day I added more CSS to the homepage and made it display some trending tv shows and movies. I also made the film and tv items appear in different colours so they're easily distinguishable. I also read up on useEffect so I could load API data when the page first loads without repeated re-loads.
+On the third day I focused on adding more CSS to the homepage. I also made it display some trending tv shows and movies that are fetched from the TMDB API whenerver the homepage loads. I made the film and tv titles appear in different colours so they're easily distinguishable. Finally, I read up on the useEffect hook so the API data call is only made when the page first loads without repeated re-loads.
 
 ### Day 4 - 17/04/2023
 
-On the fourth day I focused on removal of list items.
+I thought it would be nice to give the user the option to click on diffrent film/tv titles to view more details about the title they clicked on. So on the 4th day of developmen I focused on making a details page appear whenever a film/tv card is clicked. I then moved on to creating buttons for the film/tv card and corresponding functionality to add and remove them from the watchlist.
+
+<img src='./src/assets/film_card.jpg' height='350' >
+<img src='./src/assets/tv_card.jpg' height='350' >
 
 ### Day 5 - 18/04/2023
 
-On the fifth day I deployed my project on GitHub pages.
+The fifth day of development was mainly focused on deployment of the project. I GitHub pages as a deployment platformm.
+I also added some functionaliy to the watchlist allowing the user to delete multuple elements at the same time by selecting a checkbox.
+
+<img src='./src/assets/clear_selected_1.jpg' >
+<img src='./src/assets/clear_selected_2.jpg' >
 
 ### Day 6 - 19/04/2023
 
-forms for user to input movies and tv shows that are not part of the API
+ON day 6 of the development phase I focused on the form for getting user input. Apart from selecting movies and tv shows from the API, the user should also be able to add their own titles to their watchlist.
+<img src='./src/assets/input_form.jpg' >
+
+For fields such as production countries, companies and genres, I wanted the user to be able to enter more than one string so I decided to enable to user to dynamically generate more input fields by clicking + / - buttons next to the input fields.
+
+<img src='./src/assets/dynamic_fields.jpg' >
+
+I achieved this by creating a variable that holds an array of the values of each field, in the example below counryFields, holding the value entered into each 'Production Country' field. When the '+' icon is clicked by the user, a new empty field is added to the countryFields variable.
+
+I mapped over the items in this variable in the JSX section of the code and for each item in the countryfields array, an input field with corresponding + / - buttons is created. The key attribute of each generated input field is set equal to the index of the field in the array. This is important because when the '-' button is clicked, the function that deletes an input field needs to know which field to remove and takes the index number as an argument.
+
+```JavaScript
+const [countryFields, setCountryFields] = useState([{name: ''}])
+
+function addCountryField(){
+ setCountryFields([...countryFields, {name: ''}])
+}
+
+function removeCountryField(index) {
+  if (index > 0) {
+    const fields = [...countryFields]
+    fields.splice(index, 1)
+    setCountryFields(fields)
+  }
+}
+```
+
+```JSX
+<li>Production Countries:
+
+      {countryFields.map((field, index) => {
+        return (<div key={index}>
+        <input name='production_countries' value={field.name} onChange={(e) => handleCountryField(e, index)}></input>
+        <button type="button" className='btn input-btn' onClick={addCountryField}>+</button>
+        <button type="button" className='btn input-btn' onClick={() => removeCountryField(index)}>-</button>
+        </div>)
+      })}
+</li>
+
+```
 
 ### Day 7 - 20/04/2023
 
-form for editing movie
+On day 7 I tackled the last element that I was missing for the MVP: editing items on the list. For this I used the same form as the form for adding new titles, filling in the form field with the current values for a title and allowing the user to make changes. I also got working on the readme file detailing my work process.
 
 ### Day 8 - 21/04/2023 - Deadline 9:00AM
+
+On the final day, I presented the project to my cohort and submitted my work.
 
 ## 8. Challenges
 
@@ -157,27 +224,22 @@ form for editing movie
 
 ## 9. Wins
 
-- using a public API to retrieve data
-- adding/removing things from watchlist
+- I managed to complete all the MVP requirements for this project.
+- I managed to retrieve data from the TMDB API, process it and display it on the front end without any major issues.
+- Adding and removing input fields dynamically seemed complicated at first but once I understood the underlying logic it was easy to implement and makes adds to the aesthetic for the UI.
 
 ## 10. Key Learnings & Takeaways
 
 - Working on this project has definitely improved my understanding of React and APIs.
-
 - I want to spend more time learning and practising responsive design as this is something I didn't have the time to fully implement for this project.
-
-- This project also taught me that getting stuck while builing an application is normal
-
-- studing error messages carefully can help improve my code and make it more robust
-
-- planning different react components and props chain more carefully before starting to build them
+- This project also taught me that getting stuck while building an application is normal.
+- Studying error messages carefully can help improve my code and make it more robust.
+- Planning different react components and props chain more carefully before starting to build them is worthwhile.
 
 ## 11. Future Improvements
 
-- Incorporating more APIs
+- Incorporating additional APIs
 - Use React.Context to pass props down to children
 - Make the app Responsive
 - Save the data to localStorage or an API
-- Use a React component library like Ant Design, Bootstrap React, or Material UI
-- Use a CSS library like Bootstrap
 - Add User Sign Up, Sign In, and Sign Out with Firebase and React Authentication.
