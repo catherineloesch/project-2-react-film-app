@@ -167,7 +167,7 @@ I also added some functionaliy to the watchlist allowing the user to delete mult
 
 ### Day 6 - 19/04/2023
 
-ON day 6 of the development phase I focused on the form for getting user input. Apart from selecting movies and tv shows from the API, the user should also be able to add their own titles to their watchlist.
+On day 6 of the development phase I focused on the form for getting user input. Apart from selecting movies and tv shows from the API, the user should also be able to add their own titles to their watchlist.
 <img src='./src/assets/input_form.jpg' >
 
 For fields such as production countries, companies and genres, I wanted the user to be able to enter more than one string so I decided to enable to user to dynamically generate more input fields by clicking + / - buttons next to the input fields.
@@ -179,6 +179,7 @@ I achieved this by creating a variable that holds an array of the values of each
 I mapped over the items in this variable in the JSX section of the code and for each item in the countryfields array, an input field with corresponding + / - buttons is created. The key attribute of each generated input field is set equal to the index of the field in the array. This is important because when the '-' button is clicked, the function that deletes an input field needs to know which field to remove and takes the index number as an argument.
 
 ```JavaScript
+
 const [countryFields, setCountryFields] = useState([{name: ''}])
 
 function addCountryField(){
@@ -192,9 +193,11 @@ function removeCountryField(index) {
     setCountryFields(fields)
   }
 }
+
 ```
 
 ```JSX
+
 <li>Production Countries:
 
       {countryFields.map((field, index) => {
@@ -218,8 +221,8 @@ On the final day, I presented the project to my cohort and submitted my work.
 
 ## 8. Challenges
 
-- The most difficult part about this project was dealing with getting stuck. I realised that spending too much time with an issue without taking a step away
-- Another issue I encountered was when editing items in a list. Originally they wouldn't update immediatedly in the list and it would take changing tabs for changes to show up. One of the instructors then pointed out that I was not passing the setState function down as props and once I did that if fixed the lagging issue.
+- The main issue I got stuck on during this project was when editing items in the watchlist. Originally they wouldn't update immediatedly in the list and it would take changing tabs for changes to show up. One of the GA instructors then pointed out that I was not passing the setState function down as props. Once I did that it fixed the lagging issue.
+- I also realised that takings breaks when stuck and doing other work and come back to a problem at a later stage can be helpful. Aditionally, getting a fresh pair of eyes on a problem can speed the bug fixing process along as well.
 
 ## 9. Wins
 

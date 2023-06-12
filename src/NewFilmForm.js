@@ -104,6 +104,7 @@ function handleLangField(e, index) {
 
 
 const [genres, setGenres] = useState([{name: 'Action'}])
+
 function addGenre(){
  setGenres([...genres, {name: ''}])
 }
