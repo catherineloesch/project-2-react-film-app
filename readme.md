@@ -1,6 +1,6 @@
 # Project 2 - React List App
 
-Overview
+## Overview
 
 1. [Description](#description)
 2. [Deployment Link](#deployment-link)
@@ -9,7 +9,7 @@ Overview
 5. [Deliverables](#deliverables)
 6. [Planning](#planning)
 7. [Build Process](#build-process)
-8. [Challenges](challenges)
+8. [Challenges](#challenges)
 9. [Wins](#wins)
 10. [Key Learnings & Takeaways](#takeaways)
 11. [Future Improvements](#future-improvements)
@@ -22,14 +22,12 @@ The user can add movies and tv shows to a 'watched' and a 'to-watch' list, mark 
 <br>
 
 <img src='./src/assets/homepage.jpg' >
-<img src='./src/assets/watchlist.jpg' >
 
 ---
 
 ## <a name="deployment-link"></a> 2. Deployment link
 
-The project is hosted online on GitHub pages:<br>
-https://catherineloesch.github.io/project-2-react-film-app/
+- The project is hosted online on GitHub pages: https://catherineloesch.github.io/project-2-react-film-app/
 
 ## <a name="installation"></a> 3. Installation
 
@@ -120,13 +118,19 @@ Additional components:
 
 The plan was to create an intuitive and simple interface where the user can see the cover images of movies and tv shows so they can start adding different titles to their watchlist:
 
-<img src='./src/assets/wireframe1.jpg' >
-<img src='./src/assets/wireframe2.jpg' >
-<img src='./src/assets/wireframe3.jpg' >
+<img src='./src/assets/wireframe1.jpg' width=80% >
+
+A search page should allow the user tolook for different movie/tv title from the TMDB API:
+
+<img src='./src/assets/wireframe2.jpg' width=80%  >
+
+The Landing page should show some trending films and tv shows that the user can add to their watchlist as well:
+
+<img src='./src/assets/wireframe3.jpg' width=80%  >
 
 ---
 
-## 7. <a name="planning"></a> Build Process
+## 7. <a name="build-process"></a> Build Process
 
 ### Day 1 - 14/04/2023
 
@@ -162,8 +166,7 @@ On the third day I focused on adding more CSS to the homepage. I also made it di
 
 I thought it would be nice to give the user the option to click on diffrent film/tv titles to view more details about the title they clicked on. So on the 4th day of developmen I focused on making a details page appear whenever a film/tv card is clicked. I then moved on to creating buttons for the film/tv card and corresponding functionality to add and remove them from the watchlist.
 
-<img src='./src/assets/film_card.jpg' height='350' >
-<img src='./src/assets/tv_card.jpg' height='350' >
+<img src='./src/assets/film_card.jpg' height='350' > <img src='./src/assets/tv_card.jpg' height='350' >
 
 ### Day 5 - 18/04/2023
 
