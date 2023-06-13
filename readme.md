@@ -16,8 +16,8 @@ Overview
 
 ## 1. Description
 
-The goal of this project was to create an SPA from scratch as part of the curriculum for the General Assembly Software Engineering Immersive Course. With the objective of building a front-end list based application that updates the UI and makes requests to the API, I used ReactJS and CSS to create a movie and tv watchlist.
-The user can add movies to a 'watched' and 'to-watch' list, mark them as watched as well as edit and remove them from the list. The user also has the option to pick movies and tv shows from a public API.
+A movie and tv watchlist SPA with full CRUD functionality built from scratch in 8 days using ReactJS/CSS. This solo project was the second application built as part of the curriculum for the General Assembly Software Engineering Immersive Course, with the objective of building a front-end list-based application that updates the UI and makes requests to a third-party API.
+The user can add movies and tv shows to a 'watched' and a 'to-watch' list, mark them as watched as well as edit and remove them from the list. By clicking on cover art of a film and or tv show, more information is displayed about the title. The user also has the option to add movies and tv shows from the public TMDB API to their lists and modify/remove them.
 
 <br>
 
@@ -53,11 +53,18 @@ Additional components:
 
 ### Additional tools used:
 
-- Figma: a design tool used for building the wireframe
-  Visual Studio Code (VSCode): code editor used for writing CSS, JSX and JavaScript
-- Google Chrome Web Browser: used for launching the website and displaying the application
-  Google Chrome Developer Tools: For troubleshooting and debugging
-- Git/GitHub (for version control) and Github pages(for deployment)
+- Figma: design tool used for building the wireframe
+  - https://www.figma.com/
+- Visual Studio Code (VSCode)
+  - code editor used for writing CSS, JSX and JavaScript
+  - https://code.visualstudio.com/
+- Google Chrome browser
+  - used for launching the website and displaying the application Google Chrome
+  - Google Chrome Developer Tools: For troubleshooting and debugging
+  - https://www.google.com/intl/en_uk/chrome/
+- Git / GitHub: version control
+  - https://git-scm.com/
+  - https://github.com/https://github.com/
 
 ### External web resources:
 
