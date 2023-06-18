@@ -27,7 +27,7 @@ The user can add movies and tv shows to a 'watched' and a 'to-watch' list, mark 
 
 ## <a name="deployment-link"></a> 2. Deployment link
 
-- The project is hosted online on GitHub pages: https://catherineloesch.github.io/project-2-react-film-app/
+- The project is hosted online on GitHub pages: https://katieloesch.github.io/project-2-react-film-app/
 
 ## <a name="installation"></a> 3. Installation
 
