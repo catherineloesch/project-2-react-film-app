@@ -29,6 +29,11 @@ The user can add movies and tv shows to a 'watched' and a 'to-watch' list, mark 
 
 - The project is hosted online on GitHub pages: https://katieloesch.github.io/project-2-react-film-app/
 
+After submission of this project during the General Assembly Software Engineering Immersive course I continued working on this project. One of the major changes made was the inclusion of firebase/firestore to store user data so it persists after reload. I also implemented a fully responsive design. The updated version of the project can be found at:
+
+- https://react-film-app.katieloesch.co.uk
+- https://github.com/katieloesch/project-2-react-film-app-revisited
+
 ## <a name="installation"></a> 3. Installation
 
 - package manager used: npm - v9.6.7
