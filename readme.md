@@ -27,11 +27,11 @@ The user can add movies and tv shows to a 'watched' and a 'to-watch' list, mark 
 
 ## <a name="deployment-link"></a> 2. Deployment link
 
-- The project is hosted online on GitHub pages: https://katieloesch.github.io/project-2-react-film-app/
+- The project is hosted online on GitHub pages: htts://katieloesch.github.io/project-2-react-film-app/
 
-After submission of this project during the General Assembly Software Engineering Immersive course I continued working on this project. One of the major changes made was the inclusion of firebase/firestore to store user data so it persists after reload. I also implemented a fully responsive design. The updated version of the project can be found at:
+After submission of this project during the General Assembly Software Engineering Immersive course I continued working on this project. One of the major changes made was the inclusion of firebase/firestore to store user data so it persists after reload. I also implemented a fully responsive design. This updated version of the project also uses React.useContext to manage state globally rather than using props. The reworked of the project can be found at:
 
-- https://react-film-app.katieloesch.co.uk
+- https://film-tv-stuff.katieloesch.co.uk/
 - https://github.com/katieloesch/project-2-react-film-app-revisited
 
 ## <a name="installation"></a> 3. Installation
@@ -235,6 +235,25 @@ On day 7 I tackled the last element that I was missing for the MVP: editing item
 
 On the final day, I presented the project to my cohort and submitted my work.
 
+### Post submission updates
+
+Updates made to the application after submission can be found in the updated repository of this project:
+
+https://github.com/katieloesch/project-2-react-film-app-revisited#build-process
+
+<br>
+
+changes include:
+
+- incorporation of firebase/firestore to store user data so it persists after reload
+- fully responsive design
+- React.useContext for global state management (rather than using props)
+
+<br>
+
+the newer version of this application can be accessed at:
+https://film-tv-stuff.katieloesch.co.uk/
+
 ## 8. <a name="challenges"></a> Challenges
 
 - The main issue I got stuck on during this project was when editing items in the watchlist. Originally they wouldn't update immediatedly in the list and it would take changing tabs for changes to show up. One of the GA instructors then pointed out that I was not passing the setState function down as props. Once I did that it fixed the lagging issue.
@@ -261,3 +280,6 @@ On the final day, I presented the project to my cohort and submitted my work.
 - Make the app Responsive
 - Save the data to localStorage or an API
 - Add User Sign Up, Sign In, and Sign Out with Firebase and React Authentication.
+
+Several of these improvements were implemented after submission of the project and can be found in the updated version of this repo:
+https://film-tv-stuff.katieloesch.co.uk/
